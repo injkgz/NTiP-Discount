@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesConsole", "SalesConsole\SalesConsole.csproj", "{20BB11DB-2CB3-4A4C-866E-E2943695D60B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountConsole", "SalesConsole\DiscountConsole.csproj", "{20BB11DB-2CB3-4A4C-866E-E2943695D60B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales", "ClassLibrary1\Sales.csproj", "{C0FE1935-5C41-4C6A-B036-1E04E47756B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount", "ClassLibrary1\Discount.csproj", "{C0FE1935-5C41-4C6A-B036-1E04E47756B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

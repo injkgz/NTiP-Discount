@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sales.Library
+namespace discount
 {
     /// <summary>
     ///     Продукт
@@ -14,8 +10,11 @@ namespace Sales.Library
         /// <summary>
         ///     Цена продукта
         /// </summary>
-        private double _price { get; set; }
+        private double _price;
 
+        /// <summary>
+        ///     Вернуть и установить цену товара
+        /// </summary>
         public double Price
         {
             get => _price;
