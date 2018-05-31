@@ -4,39 +4,41 @@ using static System.Console;
 
 namespace SalesConsole
 {
-    class main
+    internal class main
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
-                Product product = new Product();
+                var product = new Product();
                 WriteLine("Введите цену товара!");
                 product.Price = Convert.ToDouble(ReadLine());
 
-                WriteLine("Выберите тип скидки!");
-                WriteLine("1 - Процентная " +
-                          "2 - Купон");
+                //WriteLine("Выберите тип скидки!");
+                //WriteLine("1 - Процентная " +
+                //          "2 - Купон");
                 WriteLine();
-                
 
-                PercentDiscount percent = new PercentDiscount();
+
+                var percent = new PercentDiscount();
 
                 WriteLine("Введите размер скидки в %: ");
                 percent.Percent = Convert.ToDouble(ReadLine());
+                WriteLine("Итоговая цена со скидкой в процентах = ");
                 WriteLine(percent.Cost(product.Price));
+                WriteLine("\n\n\n");
 
-                Product secondProduct = new Product();
+                var secondProduct = new Product();
                 WriteLine("Введите цену товара!");
                 secondProduct.Price = Convert.ToDouble(ReadLine());
 
-                CouponDiscount coupon = new CouponDiscount();
+                var coupon = new CouponDiscount();
 
                 WriteLine("Введите размер скидки по купону: ");
                 coupon.CouponValue = Convert.ToDouble(ReadLine());
+                WriteLine("Итоговая цена со скидкой по купону = ");
                 WriteLine(coupon.Cost(secondProduct.Price));
                 Read();
-
             }
             catch (Exception e)
             {
