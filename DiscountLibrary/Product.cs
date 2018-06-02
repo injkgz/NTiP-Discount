@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace discount
+namespace Discount
 {
     /// <summary>
     ///     Продукт
@@ -20,7 +20,11 @@ namespace discount
             get => _price;
             set
             {
-                if (value <= 0) throw new Exception("Цена не может быть отрицательной!");
+                if (value <= 0)
+                {
+                    throw new Exception("Цена не может быть отрицательной!");
+                }
+                 
                 _price = value;
             }
         }

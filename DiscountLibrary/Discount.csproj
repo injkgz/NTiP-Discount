@@ -7,8 +7,8 @@
     <ProjectGuid>{C0FE1935-5C41-4C6A-B036-1E04E47756B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>Discount</RootNamespace>
+    <AssemblyName>Discount</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CouponDiscount.cs" />
-    <Compile Include="Discount.cs" />
+    <Compile Include="DiscountBase.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PercentDiscount.cs" />

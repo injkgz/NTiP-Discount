@@ -1,26 +1,41 @@
 ﻿using System;
 
-namespace discount
+namespace Discount
 {
-    public class CouponDiscount : Discount
+    /// <summary>
+    ///     Скидка по купону
+    /// </summary>
+    public class CouponDiscount : DiscountBase
     {
+        /// <summary>
+        /// Конструктор скидки по купону
+        /// </summary>
+        /// <param name="couponValue"></param>
+        public CouponDiscount(double couponValue)
+        {
+            CouponValue = couponValue;
+        }
+
         /// <summary>
         ///     Сумма скидки по купону
         /// </summary>
-        private double _couponvalue;
+        private double _couponValue;
 
         /// <summary>
         ///     Вернуть и установить размер скидки по купону
         /// </summary>
         public double CouponValue
         {
-            get => _couponvalue;
+            get => _couponValue;
 
             set
             {
-                if (value < 0) throw new Exception("Скидка по купону не может быть отрицательной!");
+                if (value < 0)
+                {
+                    throw new ArgumentException("Скидка по купону не может быть отрицательной!");
+                }
 
-                _couponvalue = value;
+                _couponValue = value;
             }
         }
 
@@ -29,13 +44,14 @@ namespace discount
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>
-        public double Cost(double price)
+        public override double Calculation(double price)
         {
-            Result = price - _couponvalue;
+            if (_couponValue > price)
+            {
+                throw new ArgumentException("Цена товара со скидкой не может быть меньше 0.");
+            }
 
-            if (Result < 0) throw new Exception("Цена товара со скидкой не может быть меньше 0.");
-
-            return Result;
+            return price - _couponValue;
         }
     }
 }
