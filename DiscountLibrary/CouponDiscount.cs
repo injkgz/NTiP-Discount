@@ -30,6 +30,7 @@ namespace Discount
 
             set
             {
+                //TODO: Нужен публичный сет?
                 if (value < 0)
                 {
                     throw new ArgumentException("Скидка по купону не может быть отрицательной!");

@@ -12,6 +12,7 @@ namespace Discount
         /// </summary>
         private double _sale;
 
+        //TODO: Не правильно это хранить тут! 
         /// <summary>
         ///     Вернуть и установить размер скидки
         /// </summary>
@@ -21,6 +22,7 @@ namespace Discount
 
             set
             {
+                //TODO: Нужен публичный сет
                 if (value < 0)
                 {
                     throw new ArgumentException("Скидка не может быть меньше 0!");
