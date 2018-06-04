@@ -9,42 +9,85 @@ namespace DiscountConsole
         private static void Main(string[] args)
         {
             //TODO: Название плохое.
-            var isTrue = false;
-            while (!isTrue)
+            //сменил
+            var isException = false;
+            var product = new Product();
+            var secondProduct = new Product();
+            DiscountBase Discount;
+
+            while (!isException)
             {
                 //TODO: Зачем?
-                isTrue = false;
+                //+
                 try
                 {
                     //TODO: Косяк c RSDN
-                    DiscountBase discount;
-                    var product = new Product();
+                    //+
                     WriteLine("Введите цену первого товара!");
                     product.Price = Convert.ToDouble(ReadLine());
                     WriteLine();
-
-                    WriteLine("Введите размер скидки в %: ");
-                    //TODO: Бага, ввожу 321 - всё работает.
-                    discount = new PercentDiscount(Convert.ToDouble(ReadLine()));
-                    WriteLine("Итоговая цена со скидкой в процентах = ");
-                    WriteLine(discount.Calculation(product.Price));
-                    WriteLine("\n\n\n");
-
-                    var secondProduct = new Product();
-                    WriteLine("Введите цену второго товара!");
-                    //TODO: При вводе некорректного числа - нужно будет всё вводить заново - что не правильно.
-                    secondProduct.Price = Convert.ToDouble(ReadLine());
-                    WriteLine("Введите размер скидки по купону: ");
-                    discount = new CouponDiscount(Convert.ToDouble(ReadLine()));
-                    WriteLine("Итоговая цена со скидкой по купону = ");
-                    WriteLine(discount.Calculation(secondProduct.Price));
-                    ReadKey();
-                    isTrue = true;
+                    isException = true;
                 }
                 catch (Exception e)
                 {
                     //TODO: Обработка должно происходить на уровне ввода каждого параметра!
-                    WriteLine(e.Message + "\nПрограмма запущена заново!\n\n\n");
+                    //+
+                    WriteLine(e.Message + "\nВведите заново!\n\n\n");
+                }
+            }
+
+            isException = false;
+            while (!isException)
+            {
+                try
+                {
+                    WriteLine("Введите размер скидки в %: ");
+                    //TODO: Бага, ввожу 321 - всё работает.
+                    //+
+                    Discount = new PercentDiscount(Convert.ToDouble(ReadLine()));
+                    WriteLine("Итоговая цена со скидкой в процентах = ");
+                    WriteLine(Discount.Calculation(product.Price));
+                    WriteLine("\n\n\n");
+                    isException = true;
+                }
+                catch (Exception e)
+                {
+                    WriteLine(e.Message + "\nВведите заново!\n\n\n");
+                }
+            }
+                
+            isException = false;
+            while (!isException)
+            {
+                try
+                {
+                    WriteLine("Введите цену второго товара!");
+                    //TODO: При вводе некорректного числа - нужно будет всё вводить заново - что не правильно.
+                    //+
+                    secondProduct.Price = Convert.ToDouble(ReadLine());
+                    isException = true;
+                }
+                catch (Exception e)
+                {
+                    WriteLine(e.Message + "\nВведите заново!\n\n\n");
+                }
+            }
+
+            isException = false;
+            while (!isException)
+            {
+                try
+                {
+                    WriteLine("Введите размер скидки по купону: ");
+                    Discount = new CouponDiscount(Convert.ToDouble(ReadLine()));
+                    WriteLine("Итоговая цена со скидкой по купону = ");
+                    WriteLine(Discount.Calculation(secondProduct.Price));
+                    ReadKey();
+                    isException = true;
+                }
+                catch (Exception e)
+                {
+                    WriteLine(e.Message + "\nВведите заново!\n\n\n");
                 }
             }
         }

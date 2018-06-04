@@ -28,9 +28,10 @@ namespace Discount
         {
             get => _couponValue;
 
-            set
+            private set
             {
                 //TODO: Нужен публичный сет?
+                //нет
                 if (value < 0)
                 {
                     throw new ArgumentException("Скидка по купону не может быть отрицательной!");

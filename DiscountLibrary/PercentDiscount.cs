@@ -28,10 +28,11 @@ namespace Discount
         {
             get => _percent;
             //TODO: Нужен публичный сет?
-            set
+            //+
+           private set
             {
                 
-                if (value <= 0 && value > 100)
+                if (value <= 0 || value > 100)
                 {
                     throw new ArgumentException("Проценты скидки не могут быть меньше " +
                                                 "или равны 0, а также больше 100.");
@@ -48,8 +49,7 @@ namespace Discount
         /// <returns></returns>
         public override double Calculation(double price)
         {
-            Sale = price / 100 * _percent;
-            return price - Sale;
+            return price - (price / 100 * _percent);
         }
     }
 }
