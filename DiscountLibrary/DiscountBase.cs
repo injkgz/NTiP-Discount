@@ -7,8 +7,7 @@ namespace Discount
     /// </summary>
     public abstract class DiscountBase
     {
-        //TODO: Не правильно это хранить тут! 
-        //+
+        //TODO: Название! Calculation - существительное, а должен быть глагол из которого будет понятно - что рассчитываем.
         /// <summary>
         /// Расчёт итоговой цены товара
         /// </summary>

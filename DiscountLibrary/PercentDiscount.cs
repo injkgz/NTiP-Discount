@@ -27,11 +27,9 @@ namespace Discount
         public double Percent
         {
             get => _percent;
-            //TODO: Нужен публичный сет?
-            //+
+
            private set
             {
-                
                 if (value <= 0 || value > 100)
                 {
                     throw new ArgumentException("Проценты скидки не могут быть меньше " +

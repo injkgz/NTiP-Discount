@@ -8,21 +8,16 @@ namespace DiscountConsole
     {
         private static void Main(string[] args)
         {
-            //TODO: Название плохое.
-            //сменил
             var isException = false;
             var product = new Product();
             var secondProduct = new Product();
+//TODO: Косяк c RSDN
             DiscountBase Discount;
-
+            //TODO: Итого - 4 почти полных дубля...
             while (!isException)
             {
-                //TODO: Зачем?
-                //+
                 try
                 {
-                    //TODO: Косяк c RSDN
-                    //+
                     WriteLine("Введите цену первого товара!");
                     product.Price = Convert.ToDouble(ReadLine());
                     WriteLine();
@@ -30,8 +25,6 @@ namespace DiscountConsole
                 }
                 catch (Exception e)
                 {
-                    //TODO: Обработка должно происходить на уровне ввода каждого параметра!
-                    //+
                     WriteLine(e.Message + "\nВведите заново!\n\n\n");
                 }
             }
@@ -42,8 +35,6 @@ namespace DiscountConsole
                 try
                 {
                     WriteLine("Введите размер скидки в %: ");
-                    //TODO: Бага, ввожу 321 - всё работает.
-                    //+
                     Discount = new PercentDiscount(Convert.ToDouble(ReadLine()));
                     WriteLine("Итоговая цена со скидкой в процентах = ");
                     WriteLine(Discount.Calculation(product.Price));
@@ -62,8 +53,6 @@ namespace DiscountConsole
                 try
                 {
                     WriteLine("Введите цену второго товара!");
-                    //TODO: При вводе некорректного числа - нужно будет всё вводить заново - что не правильно.
-                    //+
                     secondProduct.Price = Convert.ToDouble(ReadLine());
                     isException = true;
                 }
