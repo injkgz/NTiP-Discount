@@ -45,7 +45,7 @@ namespace Discount
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>
-        public override double Calculation(double price)
+        public override double Calculate(double price)
         {
             return price - (price / 100 * _percent);
         }
