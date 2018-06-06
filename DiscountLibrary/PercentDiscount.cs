@@ -8,7 +8,12 @@ namespace Discount
     public class PercentDiscount : DiscountBase
     {
         /// <summary>
-        /// Конструктор скидки по процентам
+        ///     Процент скидки
+        /// </summary>
+        private double _percent;
+
+        /// <summary>
+        ///     Конструктор скидки по процентам
         /// </summary>
         /// <param name="percent"></param>
         public PercentDiscount(double percent)
@@ -17,18 +22,13 @@ namespace Discount
         }
 
         /// <summary>
-        ///     Процент скидки
-        /// </summary>
-        private double _percent;
-
-        /// <summary>
         ///     Вернуть и установить проценты
         /// </summary>
         public double Percent
         {
             get => _percent;
 
-           private set
+            private set
             {
                 if (value <= 0 || value > 100)
                 {
@@ -47,7 +47,7 @@ namespace Discount
         /// <returns></returns>
         public override double Calculate(double price)
         {
-            return price - (price / 100 * _percent);
+            return price - price / 100 * _percent;
         }
     }
 }

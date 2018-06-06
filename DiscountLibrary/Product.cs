@@ -24,7 +24,7 @@ namespace Discount
                 {
                     throw new Exception("Цена не может быть отрицательной!");
                 }
-                 
+
                 _price = value;
             }
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Discount
+﻿namespace Discount
 {
     /// <summary>
     ///     Базовая скидка
@@ -8,7 +6,7 @@ namespace Discount
     public abstract class DiscountBase
     {
         /// <summary>
-        /// Расчёт итоговой цены товара
+        ///     Расчёт итоговой цены товара
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>

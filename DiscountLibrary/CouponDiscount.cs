@@ -7,24 +7,27 @@ namespace Discount
     /// </summary>
     public class CouponDiscount : DiscountBase
     {
+        /// <summary>
+        ///     Сумма скидки по купону
+        /// </summary>
+        private double _couponValue;
+
         //TODO: XML
+        //+
         /// <summary>
         /// Конструктор скидки по купону
         /// </summary>
         /// <param name="couponValue"></param>
+        /// <param name="price"></param>
         public CouponDiscount(double couponValue, double price)
         {
             if (price < couponValue)
             {
                 throw new ArgumentException("Скидка по купону не может быть больше цены товара");
             }
+
             CouponValue = couponValue;
         }
-
-        /// <summary>
-        ///     Сумма скидки по купону
-        /// </summary>
-        private double _couponValue;
 
         /// <summary>
         ///     Вернуть и установить размер скидки по купону
