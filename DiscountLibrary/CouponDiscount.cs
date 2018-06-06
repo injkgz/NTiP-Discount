@@ -7,6 +7,7 @@ namespace Discount
     /// </summary>
     public class CouponDiscount : DiscountBase
     {
+        //TODO: XML
         /// <summary>
         /// Конструктор скидки по купону
         /// </summary>

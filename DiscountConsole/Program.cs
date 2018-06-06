@@ -6,8 +6,9 @@ namespace DiscountConsole
 {
     internal class Program
     {
+        //TODO: XML
         private static double TrueRead(Product tempProduct)
-        {
+        { //TODO: Этот метод должен просто выполнять корректное считывание в double и всё, он ничего не должен знать про продукт!
             var isException = false;
             while (!isException)
             {
@@ -25,10 +26,11 @@ namespace DiscountConsole
             return tempProduct.Price;
         }
 
+        //TODO: Использовать bool - тупо, под тип скидки нужно завести enum
         //discountType = true - Процентная скидка
         //discountType = false - Скидка по купону
         private static DiscountBase TrueConstruct(bool discountType, double tempPrice)
-        {
+        {//TODO: Тут уже для ввода каждого параметра нужно вызвать метод TrueRead
             double tempValue;
             PercentDiscount percentDiscount;
             CouponDiscount couponDiscount;
@@ -46,6 +48,7 @@ namespace DiscountConsole
 
                     couponDiscount = new CouponDiscount(tempValue, tempPrice);
                     return couponDiscount;
+                    //TODO: Это место не будет достигнуто программой
                     isException = true;
                 }
                 catch (Exception e)
@@ -61,15 +64,12 @@ namespace DiscountConsole
         {
             var product = new Product();
             var secondProduct = new Product();
-            //TODO: Косяк c RSDN
-            //переменная с нижнего регистра? или где-то в другом месте косяк?
-            //TODO: Итого - 4 почти полных дубля...
-            //сделано.
 
             WriteLine("Введите цену первого товара!");
             product.Price = TrueRead(product);
             WriteLine();
-
+            //TODO: Лучше сделать 2 метода для ввода параметров каждого из типов скидки или совместить всё это в один метод
+            //TODO: Но возвращать по базовому классу, чтобы в Main не было понятно - с какой реализацией мы работаем
             WriteLine("Введите размер скидки в %: ");
             var discount = TrueConstruct(true, 0);
             WriteLine("Итоговая цена со скидкой в процентах = ");
