@@ -1,38 +1,33 @@
 ﻿using System;
 using Discount;
+using static DiscountConsole.DiscountsEnum;
 using static System.Console;
 
 namespace DiscountConsole
 {
-    /// <summary>
-    ///     Типы скидок
-    /// </summary>
-    public enum Discounts
-    {
-        Percent,
-        Coupon
-    }
-
     internal class Program
     {
-        //TODO: XML
-        //+
         /// <summary>
-        ///     Корректное считывание стоимости товара
+        ///     Корректное считывание double значения
         /// </summary>
         /// <returns></returns>
-        private static double ReadPrice()
+        private static double ReadDouble()
         {
             //TODO: Этот метод должен просто выполнять корректное считывание в double и всё, он ничего не должен знать про продукт!
             //+
-            var isException = false;
+            return Convert.ToDouble(ReadLine());
+        }
+
+        private static Product ReadProduct()
+        {
+            var isCorrectConstruct = false;
             var product = new Product();
-            while (!isException)
+            while (!isCorrectConstruct)
             {
                 try
                 {
-                    product.Price = Convert.ToDouble(ReadLine());
-                    isException = true;
+                    product.Price = ReadDouble();
+                    return product;
                 }
                 catch (Exception e)
                 {
@@ -40,11 +35,9 @@ namespace DiscountConsole
                 }
             }
 
-            return product.Price;
+            return product;
         }
 
-        //TODO: Использовать bool - тупо, под тип скидки нужно завести enum
-        //+
         /// <summary>
         ///     Корректная инициализация сущностей CouponDiscount и PercentDiscount
         /// </summary>
@@ -55,17 +48,17 @@ namespace DiscountConsole
         {
             //TODO: Тут уже для ввода каждого параметра нужно вызвать метод TrueRead
             //метод был переделан только для считывания цены.
-            var isException = false;
-            while (!isException)
+            var isCorrectConstruct = false;
+            while (!isCorrectConstruct)
             {
                 try
                 {
-                    var tempValue = Convert.ToDouble(ReadLine());
+                    var tempValue = ReadDouble();
                     switch (discountType)
                     {
                         case Discounts.Coupon:
                         {
-                            var couponDiscount = new CouponDiscount(tempValue, tempPrice);
+                            var couponDiscount = new CouponDiscount(tempValue);
                             return couponDiscount;
                         }
                         case Discounts.Percent:
@@ -89,11 +82,8 @@ namespace DiscountConsole
 
         private static void Main(string[] args)
         {
-            var product = new Product();
-            var secondProduct = new Product();
-
             WriteLine("Введите цену первого товара!");
-            product.Price = ReadPrice();
+            var product = ReadProduct();
             WriteLine();
             //TODO: Лучше сделать 2 метода для ввода параметров каждого из типов скидки или совместить всё это в один метод
             //TODO: Но возвращать по базовому классу, чтобы в Main не было понятно - с какой реализацией мы работаем
@@ -106,7 +96,7 @@ namespace DiscountConsole
 
 
             WriteLine("Введите цену второго товара!");
-            secondProduct.Price = ReadPrice();
+            var secondProduct = ReadProduct();
 
 
             WriteLine("Введите размер скидки по купону: ");

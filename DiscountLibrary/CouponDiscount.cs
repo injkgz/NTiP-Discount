@@ -12,20 +12,12 @@ namespace Discount
         /// </summary>
         private double _couponValue;
 
-        //TODO: XML
-        //+
         /// <summary>
-        /// Конструктор скидки по купону
+        ///     Конструктор скидки по купону
         /// </summary>
         /// <param name="couponValue"></param>
-        /// <param name="price"></param>
-        public CouponDiscount(double couponValue, double price)
+        public CouponDiscount(double couponValue)
         {
-            if (price < couponValue)
-            {
-                throw new ArgumentException("Скидка по купону не может быть больше цены товара");
-            }
-
             CouponValue = couponValue;
         }
 
@@ -54,9 +46,10 @@ namespace Discount
         /// <returns></returns>
         public override double Calculate(double price)
         {
-            if (_couponValue > price)
+            if (CouponValue > price)
             {
-                throw new ArgumentException("Цена товара со скидкой не может быть меньше 0.");
+                CouponValue = CouponValue - price;
+                return 0;
             }
 
             return price - _couponValue;
