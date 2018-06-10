@@ -14,12 +14,13 @@ namespace DiscountConsole
         private static double ReadDouble()
         {
             //TODO: Этот метод должен просто выполнять корректное считывание в double и всё, он ничего не должен знать про продукт!
-            //+
+            //TODO: А где обработка исключения после ввода некорректной строки для Double?
             return Convert.ToDouble(ReadLine());
         }
 
         private static Product ReadProduct()
         {
+            //TODO: Название!
             var isCorrectConstruct = false;
             var product = new Product();
             while (!isCorrectConstruct)
@@ -44,32 +45,33 @@ namespace DiscountConsole
         /// <param name="discountType"></param>
         /// <param name="tempPrice"></param>
         /// <returns></returns>
+        /// TODO: Название метода
+        /// TODO: price не используется!
         private static DiscountBase TrueConstruct(Discounts discountType, double tempPrice)
         {
-            //TODO: Тут уже для ввода каждого параметра нужно вызвать метод TrueRead
-            //метод был переделан только для считывания цены.
+            //TODO: Название!
             var isCorrectConstruct = false;
             while (!isCorrectConstruct)
             {
                 try
                 {
+                    //TODO: Почему описание вводимого параметра из консоли оторвано от самого ввода?
                     var tempValue = ReadDouble();
                     switch (discountType)
                     {
                         case Discounts.Coupon:
                         {
+                            //TODO: Можно сразу return!
                             var couponDiscount = new CouponDiscount(tempValue);
                             return couponDiscount;
                         }
                         case Discounts.Percent:
                         {
+                            //TODO: Можно сразу return!
                             var percentDiscount = new PercentDiscount(tempValue);
                             return percentDiscount;
                         }
                     }
-
-                    //TODO: Это место не будет достигнуто программой
-                    //+
                 }
                 catch (Exception e)
                 {
@@ -85,9 +87,7 @@ namespace DiscountConsole
             WriteLine("Введите цену первого товара!");
             var product = ReadProduct();
             WriteLine();
-            //TODO: Лучше сделать 2 метода для ввода параметров каждого из типов скидки или совместить всё это в один метод
-            //TODO: Но возвращать по базовому классу, чтобы в Main не было понятно - с какой реализацией мы работаем
-            //у меня так и сделано, один метод, возвращается по базовому классу...
+            
             WriteLine("Введите размер скидки в %: ");
             var discount = TrueConstruct(Discounts.Percent, 0);
             WriteLine("Итоговая цена со скидкой в процентах = ");

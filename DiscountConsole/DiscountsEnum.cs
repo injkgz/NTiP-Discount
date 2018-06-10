@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiscountConsole
 {
+    //TODO: Нафиг тут класс? Можно без него.
     class DiscountsEnum
     { 
-        //TODO
         /// <summary>
         ///     Типы скидок
         /// </summary>
