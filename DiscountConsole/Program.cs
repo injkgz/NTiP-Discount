@@ -14,13 +14,12 @@ namespace DiscountConsole
         {
             var isCorrectEntering = false;
             //TODO: Нафиг это тут?
-            double tempValue = -1;
+            //+
             while (!isCorrectEntering)
             {
                 try
                 {
-                    tempValue = Convert.ToDouble(ReadLine());
-                    return tempValue;
+                    return Convert.ToDouble(ReadLine());
                 }
                 catch (Exception e)
                 {
@@ -28,7 +27,7 @@ namespace DiscountConsole
                 }
             }
 
-            return tempValue;
+            return 0;
         }
 
         /// <summary>
@@ -37,16 +36,16 @@ namespace DiscountConsole
         /// <returns></returns>
         private static Product ReadProduct()
         {
-
             var isCorrectInitialization = false;
             //TODO: Нафиг это тут?
-            var product = new Product();
+            //Чтобы отрабатывался try catch при set'ере поля Price у Product!
+            //Заставите делать конструктор
+            //Я его уже сделал.
             while (!isCorrectInitialization)
             {
                 try
                 {
-                    product.Price = ReadDouble();
-                    return product;
+                    return new Product(ReadDouble());
                 }
                 catch (Exception e)
                 {
@@ -54,7 +53,7 @@ namespace DiscountConsole
                 }
             }
 
-            return product;
+            return null;
         }
 
         /// <summary>
@@ -70,23 +69,21 @@ namespace DiscountConsole
                 try
                 {
                     //TODO: Отдельная переменная для этого не нужна.
-                    double tempValue;
+                    //+
                     switch (discountType)
                     {
                         case Discounts.Coupon:
                         {
                             WriteLine("Введите размер скидки по купону: ");
-                            tempValue = ReadDouble();
-                            return new CouponDiscount(tempValue);
+                            return new CouponDiscount(ReadDouble());
                         }
                         case Discounts.Percent:
                         {
                             WriteLine("Введите размер скидки в %: ");
-                            tempValue = ReadDouble();
                             //TODO: Можно сразу return!
                             //+, почему ReSharper такие вещи не отрабатывает :(
                             //Потому что... головой надо думать =)
-                            return new PercentDiscount(tempValue);
+                            return new PercentDiscount(ReadDouble());
                         }
                     }
                 }
@@ -101,8 +98,10 @@ namespace DiscountConsole
 
         private static void Main(string[] args)
         {
-            WriteLine("Введите цену первого товара!");
-            var product = ReadProduct();//TODO: Почему тут есть WriteLine(), а ниже при создании Product нет? (потому что дубль в коде...)
+            WriteLine("Введите цену товара!");
+            var product =
+                ReadProduct(); //TODO: Почему тут есть WriteLine(), а ниже при создании Product нет? (потому что дубль в коде...)
+            //+, так?
             WriteLine();
 
             var discount = ReadDiscount(Discounts.Percent);
@@ -111,12 +110,13 @@ namespace DiscountConsole
 
             WriteLine("\n\n\n");
 
-            WriteLine("Введите цену второго товара!");
-            var secondProduct = ReadProduct();
-            
+            WriteLine("Введите цену товара!");
+            product = ReadProduct();
+            WriteLine();
+
             discount = ReadDiscount(Discounts.Coupon);
             WriteLine("Итоговая цена со скидкой по купону = ");
-            WriteLine(discount.Calculate(secondProduct.Price));
+            WriteLine(discount.Calculate(product.Price));
             ReadKey();
         }
     }
