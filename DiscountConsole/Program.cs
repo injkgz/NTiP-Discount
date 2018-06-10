@@ -1,6 +1,5 @@
 ﻿using System;
 using Discount;
-using static DiscountConsole.DiscountsEnum;
 using static System.Console;
 
 namespace DiscountConsole
@@ -15,15 +14,36 @@ namespace DiscountConsole
         {
             //TODO: Этот метод должен просто выполнять корректное считывание в double и всё, он ничего не должен знать про продукт!
             //TODO: А где обработка исключения после ввода некорректной строки для Double?
-            return Convert.ToDouble(ReadLine());
+            //+
+            var isCorrectEntering = false;
+            double tempValue = -1;
+            while (!isCorrectEntering)
+            {
+                try
+                {
+                    tempValue = Convert.ToDouble(ReadLine());
+                    return tempValue;
+                }
+                catch (Exception e)
+                {
+                    WriteLine(e.Message + "\nВведите заново!\n");
+                }
+            }
+
+            return tempValue;
         }
 
+        /// <summary>
+        ///     Корректная инициализация сущности Product
+        /// </summary>
+        /// <returns></returns>
         private static Product ReadProduct()
         {
             //TODO: Название!
-            var isCorrectConstruct = false;
+            //+
+            var isCorrectInitialization = false;
             var product = new Product();
-            while (!isCorrectConstruct)
+            while (!isCorrectInitialization)
             {
                 try
                 {
@@ -43,33 +63,38 @@ namespace DiscountConsole
         ///     Корректная инициализация сущностей CouponDiscount и PercentDiscount
         /// </summary>
         /// <param name="discountType"></param>
-        /// <param name="tempPrice"></param>
         /// <returns></returns>
-        /// TODO: Название метода
-        /// TODO: price не используется!
-        private static DiscountBase TrueConstruct(Discounts discountType, double tempPrice)
+        // TODO: Название метода
+        // TODO: price не используется!
+        // +
+        private static DiscountBase ReadDiscount(Discounts discountType)
         {
             //TODO: Название!
-            var isCorrectConstruct = false;
-            while (!isCorrectConstruct)
+            var isCorrectInitialization = false;
+            while (!isCorrectInitialization)
             {
                 try
                 {
                     //TODO: Почему описание вводимого параметра из консоли оторвано от самого ввода?
-                    var tempValue = ReadDouble();
+                    //+
+                    double tempValue;
                     switch (discountType)
                     {
                         case Discounts.Coupon:
                         {
+                            WriteLine("Введите размер скидки по купону: ");
+                            tempValue = ReadDouble();
                             //TODO: Можно сразу return!
-                            var couponDiscount = new CouponDiscount(tempValue);
-                            return couponDiscount;
+                            //+
+                            return new CouponDiscount(tempValue);
                         }
                         case Discounts.Percent:
                         {
+                            WriteLine("Введите размер скидки в %: ");
+                            tempValue = ReadDouble();
                             //TODO: Можно сразу return!
-                            var percentDiscount = new PercentDiscount(tempValue);
-                            return percentDiscount;
+                            //+, почему ReSharper такие вещи не отрабатывает :(
+                            return new PercentDiscount(tempValue);
                         }
                     }
                 }
@@ -87,9 +112,8 @@ namespace DiscountConsole
             WriteLine("Введите цену первого товара!");
             var product = ReadProduct();
             WriteLine();
-            
-            WriteLine("Введите размер скидки в %: ");
-            var discount = TrueConstruct(Discounts.Percent, 0);
+
+            var discount = ReadDiscount(Discounts.Percent);
             WriteLine("Итоговая цена со скидкой в процентах = ");
             WriteLine(discount.Calculate(product.Price));
             WriteLine("\n\n\n");
@@ -99,8 +123,7 @@ namespace DiscountConsole
             var secondProduct = ReadProduct();
 
 
-            WriteLine("Введите размер скидки по купону: ");
-            discount = TrueConstruct(Discounts.Coupon, secondProduct.Price);
+            discount = ReadDiscount(Discounts.Coupon);
             WriteLine("Итоговая цена со скидкой по купону = ");
             WriteLine(discount.Calculate(secondProduct.Price));
             ReadKey();
