@@ -15,6 +15,7 @@ namespace Discount
         {
             Price = price;
         }
+
         /// <summary>
         ///     Цена продукта
         /// </summary>

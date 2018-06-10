@@ -13,8 +13,6 @@ namespace DiscountConsole
         private static double ReadDouble()
         {
             var isCorrectEntering = false;
-            //TODO: Нафиг это тут?
-            //+
             while (!isCorrectEntering)
             {
                 try
@@ -37,10 +35,6 @@ namespace DiscountConsole
         private static Product ReadProduct()
         {
             var isCorrectInitialization = false;
-            //TODO: Нафиг это тут?
-            //Чтобы отрабатывался try catch при set'ере поля Price у Product!
-            //Заставите делать конструктор
-            //Я его уже сделал.
             while (!isCorrectInitialization)
             {
                 try
@@ -68,8 +62,6 @@ namespace DiscountConsole
             {
                 try
                 {
-                    //TODO: Отдельная переменная для этого не нужна.
-                    //+
                     switch (discountType)
                     {
                         case Discounts.Coupon:
@@ -80,9 +72,6 @@ namespace DiscountConsole
                         case Discounts.Percent:
                         {
                             WriteLine("Введите размер скидки в %: ");
-                            //TODO: Можно сразу return!
-                            //+, почему ReSharper такие вещи не отрабатывает :(
-                            //Потому что... головой надо думать =)
                             return new PercentDiscount(ReadDouble());
                         }
                     }
@@ -102,6 +91,7 @@ namespace DiscountConsole
             var product =
                 ReadProduct(); //TODO: Почему тут есть WriteLine(), а ниже при создании Product нет? (потому что дубль в коде...)
             //+, так?
+            //TODO: Строго говоря - нет. Лабу принял, при встрече - можно обсудить, что тут имелось ввиду.
             WriteLine();
 
             var discount = ReadDiscount(Discounts.Percent);
