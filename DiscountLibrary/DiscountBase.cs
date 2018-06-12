@@ -1,8 +1,11 @@
-﻿namespace Discount
+﻿using System;
+
+namespace Discount
 {
     /// <summary>
     ///     Базовая скидка
     /// </summary>
+    [Serializable]
     public abstract class DiscountBase
     {
         /// <summary>

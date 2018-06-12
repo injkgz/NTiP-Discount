@@ -5,6 +5,7 @@ namespace Discount
     /// <summary>
     ///     Процентная скидка
     /// </summary>
+    [Serializable]
     public class PercentDiscount : DiscountBase
     {
         /// <summary>

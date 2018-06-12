@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.priceBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.discountValueBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
+            this.percentRadioButton = new System.Windows.Forms.RadioButton();
+            this.couponRadioButton = new System.Windows.Forms.RadioButton();
+            this.DiscountBox = new System.Windows.Forms.GroupBox();
+            this.DiscountBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.Location = new System.Drawing.Point(100, 252);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(100, 252);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(129, 40);
+            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // textBox1
+            // priceBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 62);
-            this.textBox1.MinimumSize = new System.Drawing.Size(50, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.priceBox.Location = new System.Drawing.Point(100, 62);
+            this.priceBox.MinimumSize = new System.Drawing.Size(50, 4);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(129, 20);
+            this.priceBox.TabIndex = 2;
+            this.priceBox.TextChanged += new System.EventHandler(this.priceBox_TextChanged);
+            this.priceBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceBox_KeyPress);
             // 
             // label1
             // 
@@ -68,15 +68,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Введите цену товара!";
             // 
-            // textBox3
+            // discountValueBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 216);
-            this.textBox3.MinimumSize = new System.Drawing.Size(50, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(129, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.discountValueBox.Location = new System.Drawing.Point(100, 216);
+            this.discountValueBox.MinimumSize = new System.Drawing.Size(50, 4);
+            this.discountValueBox.Name = "discountValueBox";
+            this.discountValueBox.Size = new System.Drawing.Size(129, 20);
+            this.discountValueBox.TabIndex = 7;
+            this.discountValueBox.TextChanged += new System.EventHandler(this.discountValueBox_TextChanged);
+            this.discountValueBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.discountValueBox_KeyPress);
             // 
             // label3
             // 
@@ -87,40 +87,40 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Введите значение скидки";
             // 
-            // radioButton1
+            // percentRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 17);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "По процентам";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.percentRadioButton.AutoSize = true;
+            this.percentRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.percentRadioButton.Name = "percentRadioButton";
+            this.percentRadioButton.Size = new System.Drawing.Size(97, 17);
+            this.percentRadioButton.TabIndex = 8;
+            this.percentRadioButton.TabStop = true;
+            this.percentRadioButton.Text = "По процентам";
+            this.percentRadioButton.UseVisualStyleBackColor = true;
+            this.percentRadioButton.CheckedChanged += new System.EventHandler(this.percentRadioButton_CheckedChanged);
             // 
-            // radioButton2
+            // couponRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(76, 17);
-            this.radioButton2.TabIndex = 9;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "По купону";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.couponRadioButton.AutoSize = true;
+            this.couponRadioButton.Location = new System.Drawing.Point(6, 42);
+            this.couponRadioButton.Name = "couponRadioButton";
+            this.couponRadioButton.Size = new System.Drawing.Size(76, 17);
+            this.couponRadioButton.TabIndex = 9;
+            this.couponRadioButton.TabStop = true;
+            this.couponRadioButton.Text = "По купону";
+            this.couponRadioButton.UseVisualStyleBackColor = true;
+            this.couponRadioButton.CheckedChanged += new System.EventHandler(this.couponRadionButton_CheckedChanged);
             // 
-            // groupBox1
+            // DiscountBox
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(100, 99);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 82);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Тип скидки";
+            this.DiscountBox.Controls.Add(this.percentRadioButton);
+            this.DiscountBox.Controls.Add(this.couponRadioButton);
+            this.DiscountBox.Location = new System.Drawing.Point(100, 99);
+            this.DiscountBox.Name = "DiscountBox";
+            this.DiscountBox.Size = new System.Drawing.Size(129, 82);
+            this.DiscountBox.TabIndex = 10;
+            this.DiscountBox.TabStop = false;
+            this.DiscountBox.Text = "Тип скидки";
             // 
             // FormDialogAdd
             // 
@@ -128,20 +128,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 338);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.DiscountBox);
+            this.Controls.Add(this.discountValueBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.priceBox);
+            this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormDialogAdd";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление товара";
             this.TopMost = true;
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.DiscountBox.ResumeLayout(false);
+            this.DiscountBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,13 +149,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox discountValueBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton percentRadioButton;
+        private System.Windows.Forms.RadioButton couponRadioButton;
+        private System.Windows.Forms.GroupBox DiscountBox;
     }
 }

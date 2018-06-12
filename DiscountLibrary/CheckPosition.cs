@@ -5,18 +5,18 @@ namespace Discount
     /// <summary>
     ///     Позиция в чеке
     /// </summary>
-    [Serializable()]
+    [Serializable]
     public class CheckPosition
-    { 
+    {
+        /// <summary>
+        ///     Скидка
+        /// </summary>
+        private readonly DiscountBase _discountBase;
+
         /// <summary>
         ///     Товар
         /// </summary>
-        private Product _product;
-
-        /// <summary>
-        /// Скидка
-        /// </summary>
-        private DiscountBase _discountBase;
+        private readonly Product _product;
 
         /// <summary>
         ///     Конструктор позиции в чеке
@@ -32,53 +32,49 @@ namespace Discount
         /// <summary>
         ///     Вернуть цену товара в чеке
         /// </summary>
-        public double CheckPositionPrice
-        {
-            get => _product.Price;
-        }
+        public double CheckPositionPrice => _product.Price;
 
+        /// <summary>
+        ///     Вернуть через string название типа скидки
+        /// </summary>
         public string DiscountType
         {
             get
             {
-                if (_discountBase is CouponDiscount)
+                switch (_discountBase)
                 {
-                    return "Скидка по купону";
-                }
-
-                if (_discountBase is PercentDiscount)
-                {
-                    return "Скидка по процентам";
+                    case CouponDiscount _:
+                        return "Скидка по купону";
+                    case PercentDiscount _:
+                        return "Скидка по процентам";
                 }
 
                 return "Нет скидки";
             }
         }
 
-        public double CheckPositionDiscount
-        {
-            get => _discountBase.Calculate(_product.Price);
-        }
+        /// <summary>
+        ///     Вернуть итоговую стоимость товара
+        /// </summary>
+        public double CheckPositionDiscount => _discountBase.Calculate(_product.Price);
 
+        /// <summary>
+        ///     Вернуть значение скидки в зависимости от типа
+        /// </summary>
         public double DiscountValue
         {
             get
             {
-                if (_discountBase is CouponDiscount)
+                switch (_discountBase)
                 {
-                    CouponDiscount temp = (CouponDiscount)_discountBase;
-                    return temp.CouponValue;
-                }
-
-                if (_discountBase is PercentDiscount)
-                {
-                    PercentDiscount temp = (PercentDiscount)_discountBase;
-                    return temp.Percent;
+                    case CouponDiscount temp:
+                        return temp.CouponValue;
+                    case PercentDiscount temp:
+                        return temp.Percent;
                 }
 
                 return 0;
             }
         }
-
     }
 }

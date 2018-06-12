@@ -5,6 +5,7 @@ namespace Discount
     /// <summary>
     ///     Скидка по купону
     /// </summary>
+    [Serializable]
     public class CouponDiscount : DiscountBase
     {
         /// <summary>
