@@ -13,19 +13,26 @@ namespace DiscountForms
 {
     public partial class MainForm : Form
     {
-        private List<Product> productList = new List<Product>();
+        private List<CheckPosition> checkList = new List<CheckPosition>();
         public MainForm()
         {
             InitializeComponent();
-           // bindingSource1.
-            //productTable.DataSource = bindingSource1;
+            bindingSourceCheckPosition.DataSource = checkList;
+            productTable.DataSource = bindingSourceCheckPosition;
             
+
         }
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
-            var form = new FormDialogAdd();
+            var form = new FormDialogAdd(bindingSourceCheckPosition);
             form.ShowDialog();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            int index = productTable.CurrentRow.Index;
+            productTable.Rows.Remove(productTable.Rows[index]);
         }
     }
 }
