@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Discount
 {
     /// <summary>
     ///     Процентная скидка
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class PercentDiscount : DiscountBase
     {
         /// <summary>
@@ -25,6 +26,7 @@ namespace Discount
         /// <summary>
         ///     Вернуть и установить проценты
         /// </summary>
+        [DataMember]
         public double Percent
         {
             get => _percent;
@@ -45,9 +47,11 @@ namespace Discount
         ///     Метод, возвращающий string-описание скидки
         /// </summary>
         /// <returns></returns>
-        public override string GetDescription()
+        [DataMember]
+        public override string Description
         {
-            return "Скидка по процентам";
+            get => "Скидка по процентам";
+            set => _description = value;
         }
 
         /// <summary>

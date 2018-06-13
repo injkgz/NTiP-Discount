@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using Discount;
 using static DiscountForms.FormTools;
+using static DiscountForms.Serialization;
 
 namespace DiscountForms
 {
@@ -14,12 +13,7 @@ namespace DiscountForms
         /// <summary>
         ///     Лист, хранящий сущности CheckPosition
         /// </summary>
-        private readonly List<CheckPosition> _checkList = new List<CheckPosition>();
-
-        /// <summary>
-        ///     Сериализует/Десериализует объекты.
-        /// </summary>
-        private readonly BinaryFormatter _formatter;
+        private BindingList<CheckPosition> _checkList = new BindingList<CheckPosition>();
 
         /// <summary>
         ///     Конструктор MainForm
@@ -29,7 +23,6 @@ namespace DiscountForms
             InitializeComponent();
             bindingSourceCheckPosition.DataSource = _checkList;
             productTable.DataSource = bindingSourceCheckPosition;
-            _formatter = new BinaryFormatter();
 #if !DEBUG
             buttonAddRandom.Visible = false;
 #endif
@@ -70,12 +63,12 @@ namespace DiscountForms
             var random = new Random();
             double price = random.Next(100, 10000);
             double discountValue = random.Next(50, 9800);
-            bindingSourceCheckPosition.Add(new CheckPosition(new CouponDiscount(discountValue),
+            _checkList.Add(new CheckPosition(new CouponDiscount(discountValue),
                 new Product(price)));
 
             price = random.Next(100, 10000);
             discountValue = random.Next(1, 90);
-            bindingSourceCheckPosition.Add(new CheckPosition(new PercentDiscount(discountValue),
+            _checkList.Add(new CheckPosition(new PercentDiscount(discountValue),
                 new Product(price)));
         }
 
@@ -86,19 +79,11 @@ namespace DiscountForms
         /// <param name="e">Аргументы события</param>
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var fileStream = new FileStream("checkList.inj",
-                    FileMode.OpenOrCreate);
+            saveFileDialog.Filter = "CheckPositionList|*.inj";
 
-                _formatter.Serialize(fileStream, _checkList);
-                fileStream.Dispose();
-
-                MessageBox.Show("Файл сохранен.");
-            }
-            catch (Exception exception)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Save(saveFileDialog.FileName, _checkList);
             }
         }
 
@@ -109,21 +94,12 @@ namespace DiscountForms
         /// <param name="e">Аргументы события</param>
         private void LoadMenuItem_Click(object sender, EventArgs e)
         {
-            var fileStream = new FileStream("checkList.inj",
-                FileMode.OpenOrCreate);
-
-            var deserializeCheckPositions = (List<CheckPosition>) _formatter.Deserialize(fileStream);
-
-            bindingSourceCheckPosition.Clear();
-
-            foreach (var salary in deserializeCheckPositions)
+            openFileDialog.Filter = "CheckPositionList|*.inj";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                bindingSourceCheckPosition.Add(salary);
+                _checkList = Open(openFileDialog.FileName);
+                productTable.DataSource = _checkList;
             }
-
-            fileStream.Dispose();
-
-            MessageBox.Show("Данные считаны!");
         }
 
         /// <summary>

@@ -1,23 +1,13 @@
-﻿using System;
+﻿using System.Runtime.Serialization;
 
 namespace Discount
 {
     /// <summary>
     ///     Позиция в чеке
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class CheckPosition
     {
-        /// <summary>
-        ///     Скидка
-        /// </summary>
-        private readonly DiscountBase _discountBase;
-
-        /// <summary>
-        ///     Товар
-        /// </summary>
-        private readonly Product _product;
-
         /// <summary>
         ///     Конструктор позиции в чеке
         /// </summary>
@@ -25,21 +15,30 @@ namespace Discount
         /// <param name="product"></param>
         public CheckPosition(DiscountBase discount, Product product)
         {
-            if (_discountBase != null && _product != null)
-            {
-                _discountBase = discount;
-                _product = product;
-            }
-            else
-            {
-                throw new ArgumentException("Аргументы = null!");
-            }
+            DiscountBase = discount;
+            Product = product;
         }
+
+        /// <summary>
+        ///     Скидка
+        /// </summary>
+        [DataMember]
+        public DiscountBase DiscountBase { get; set; }
+
+        /// <summary>
+        ///     Товар
+        /// </summary>
+        [DataMember]
+        public Product Product { get; set; }
 
         /// <summary>
         ///     Вернуть цену товара в чеке
         /// </summary>
-        public double CheckPositionPrice => _product.Price;
+        public double CheckPositionPrice
+        {
+            get => Product.Price;
+            set => Product.Price = value;
+        }
 
         //TODO:
         //+
@@ -50,9 +49,9 @@ namespace Discount
         {
             get
             {
-                if (_discountBase != null)
+                if (DiscountBase != null)
                 {
-                    return _discountBase.GetDescription();
+                    return DiscountBase.Description;
                 }
 
                 return "Нет скидки";
@@ -62,7 +61,7 @@ namespace Discount
         /// <summary>
         ///     Вернуть итоговую стоимость товара
         /// </summary>
-        public double CheckPositionDiscount => _discountBase.Calculate(_product.Price);
+        public double CheckPositionDiscount => DiscountBase.Calculate(Product.Price);
 
         //TODO:
         //+
@@ -73,9 +72,9 @@ namespace Discount
         {
             get
             {
-                if (_discountBase != null)
+                if (DiscountBase != null)
                 {
-                    return _discountBase.GetValue();
+                    return DiscountBase.GetValue();
                 }
 
                 return 0;

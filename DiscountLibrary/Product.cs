@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Discount
 {
     /// <summary>
     ///     Продукт
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class Product
     {
         /// <summary>
@@ -25,6 +26,7 @@ namespace Discount
         /// <summary>
         ///     Вернуть и установить цену товара
         /// </summary>
+        [DataMember]
         public double Price
         {
             get => _price;

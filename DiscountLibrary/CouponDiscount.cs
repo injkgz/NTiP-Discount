@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Discount
 {
     /// <summary>
     ///     Скидка по купону
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class CouponDiscount : DiscountBase
     {
         /// <summary>
@@ -25,6 +26,7 @@ namespace Discount
         /// <summary>
         ///     Вернуть и установить размер скидки по купону
         /// </summary>
+        [DataMember]
         public double CouponValue
         {
             get => _couponValue;
@@ -44,9 +46,11 @@ namespace Discount
         ///     Метод, возвращающий string-описание скидки
         /// </summary>
         /// <returns></returns>
-        public override string GetDescription()
+        [DataMember]
+        public override string Description
         {
-            return "Скидка по купону";
+            get => "Скидка по купону";
+            set => _description = value;
         }
 
         /// <summary>

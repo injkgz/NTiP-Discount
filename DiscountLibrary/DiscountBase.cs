@@ -1,13 +1,25 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Discount
 {
     /// <summary>
     ///     Базовая скидка
     /// </summary>
-    [Serializable]
+    [DataContract]
     public abstract class DiscountBase
     {
+        /// <summary>
+        ///     Описание Discount
+        /// </summary>
+        protected string _description;
+
+        /// <summary>
+        ///     Метод, возвращающий string-описание скидки
+        /// </summary>
+        /// <returns></returns>
+        public abstract string Description { get; set; }
+
         //TODO: Нужна проверка входного параметра
         //+
         /// <summary>
@@ -16,12 +28,6 @@ namespace Discount
         /// <param name="price"></param>
         /// <returns></returns>
         public abstract double Calculate(double price);
-
-        /// <summary>
-        ///     Метод, возвращающий string-описание скидки
-        /// </summary>
-        /// <returns></returns>
-        public abstract string GetDescription();
 
         /// <summary>
         ///     Метод, возвращающий значение скидки в зависимости от её типа:
