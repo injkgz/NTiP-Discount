@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using Discount;
 using static DiscountForms.FormTools;
@@ -26,6 +25,11 @@ namespace DiscountForms
             couponRadioButton.Checked = true;
         }
 
+        /// <summary>
+        ///     Обработчик события нажатия на кнопку Добавить
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             var discountType = Discounts.Percent;
@@ -44,7 +48,7 @@ namespace DiscountForms
         }
 
         /// <summary>
-        /// Метод добавления элементов в таблицу
+        ///     Метод добавления элементов в таблицу
         /// </summary>
         /// <param name="discountValue"></param>
         /// <param name="price"></param>
@@ -70,12 +74,21 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Обработчик события изменения текста в PriceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PriceBox_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = priceBox.Text.Length != 0;
         }
 
-
+        /// <summary>
+        ///     Обработчик события изменения текста в DiscountValueBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DiscountValueBox_TextChanged(object sender, EventArgs e)
         {
             if (priceBox.Text.Length == 0)
@@ -102,6 +115,11 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Обработчик события нажатия клавиши в DiscountValueBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DiscountValueBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (percentRadioButton.Checked == false && couponRadioButton.Checked == false)
@@ -111,27 +129,40 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Обработчик события активации PercentRadioButton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PercentRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             discountValueBox.Clear();
         }
 
+        /// <summary>
+        ///     Обработчик события валидации PriceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PriceBox_Validating(object sender, CancelEventArgs e)
         {
             if (priceBox.Text != "")
             {
                 e.Cancel = !CheckStringForDouble(priceBox.Text);
             }
-            
         }
 
-        private void discountValueBox_Validating(object sender, CancelEventArgs e)
+        /// <summary>
+        ///     Обработчик события валидации DiscountValueBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DiscountValueBox_Validating(object sender, CancelEventArgs e)
         {
             if (discountValueBox.Text != "")
             {
                 e.Cancel = !CheckStringForDouble(discountValueBox.Text);
             }
-           
         }
     }
 }

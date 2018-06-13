@@ -40,13 +40,18 @@ namespace DiscountForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAddProduct_Click(object sender, EventArgs e)
+        private void ButtonAddProduct_Click(object sender, EventArgs e)
         {
             var form = new AddDialogForm(bindingSourceCheckPosition);
             form.ShowDialog();
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Удаление выбранного элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (productTable.CurrentRow != null)
             {
@@ -58,8 +63,8 @@ namespace DiscountForms
         /// <summary>
         ///     Заполнение случайными данными
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void buttonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
@@ -74,6 +79,11 @@ namespace DiscountForms
                 new Product(price)));
         }
 
+        /// <summary>
+        ///     Обработчик события нажатия на кнопку Сохранить
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -92,6 +102,11 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Обработчик события нажатия на кнопку Загрузить
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
         private void LoadMenuItem_Click(object sender, EventArgs e)
         {
             var fileStream = new FileStream("checkList.inj",
@@ -111,7 +126,12 @@ namespace DiscountForms
             MessageBox.Show("Данные считаны!");
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Обработчик события нажатия на кнопку Поиск
+        /// </summary>
+        /// <param name="sender">Отправитель события</param>
+        /// <param name="e">Аргументы события</param>
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             if (searchBox.Text != "")
             {
@@ -137,7 +157,7 @@ namespace DiscountForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             searchButton.Enabled = searchBox.Text.Length != 0;
         }
@@ -147,7 +167,7 @@ namespace DiscountForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void searchBox_Validating(object sender, CancelEventArgs e)
+        private void SearchBox_Validating(object sender, CancelEventArgs e)
         {
             if (searchBox.Text != "")
             {

@@ -118,7 +118,7 @@
             this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Добавить позицию в чеке";
             this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAddProduct_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAddProduct_Click);
             // 
             // deleteButton
             // 
@@ -128,7 +128,7 @@
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Удалить позицию в чеке";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // buttonAddRandom
             // 
@@ -179,8 +179,8 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(116, 20);
             this.searchBox.TabIndex = 5;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
-            this.searchBox.Validating += new System.ComponentModel.CancelEventHandler(this.searchBox_Validating);
+            this.searchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            this.searchBox.Validating += new System.ComponentModel.CancelEventHandler(this.SearchBox_Validating);
             // 
             // label1
             // 
@@ -199,7 +199,7 @@
             this.searchButton.TabIndex = 7;
             this.searchButton.Text = "Поиск";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // MainForm
             // 

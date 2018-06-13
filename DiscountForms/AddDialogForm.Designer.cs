@@ -41,7 +41,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(100, 252);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 235);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(129, 40);
             this.buttonAdd.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // priceBox
             // 
-            this.priceBox.Location = new System.Drawing.Point(100, 62);
+            this.priceBox.Location = new System.Drawing.Point(12, 45);
             this.priceBox.MinimumSize = new System.Drawing.Size(50, 4);
             this.priceBox.Name = "priceBox";
             this.priceBox.Size = new System.Drawing.Size(129, 20);
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(97, 31);
+            this.label1.Location = new System.Drawing.Point(9, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 13);
             this.label1.TabIndex = 3;
@@ -71,19 +71,19 @@
             // 
             // discountValueBox
             // 
-            this.discountValueBox.Location = new System.Drawing.Point(100, 216);
+            this.discountValueBox.Location = new System.Drawing.Point(12, 199);
             this.discountValueBox.MinimumSize = new System.Drawing.Size(50, 4);
             this.discountValueBox.Name = "discountValueBox";
             this.discountValueBox.Size = new System.Drawing.Size(129, 20);
             this.discountValueBox.TabIndex = 7;
             this.discountValueBox.TextChanged += new System.EventHandler(this.DiscountValueBox_TextChanged);
             this.discountValueBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DiscountValueBox_KeyPress);
-            this.discountValueBox.Validating += new System.ComponentModel.CancelEventHandler(this.discountValueBox_Validating);
+            this.discountValueBox.Validating += new System.ComponentModel.CancelEventHandler(this.DiscountValueBox_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 200);
+            this.label3.Location = new System.Drawing.Point(9, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 13);
             this.label3.TabIndex = 6;
@@ -117,7 +117,7 @@
             // 
             this.DiscountBox.Controls.Add(this.percentRadioButton);
             this.DiscountBox.Controls.Add(this.couponRadioButton);
-            this.DiscountBox.Location = new System.Drawing.Point(100, 99);
+            this.DiscountBox.Location = new System.Drawing.Point(12, 82);
             this.DiscountBox.Name = "DiscountBox";
             this.DiscountBox.Size = new System.Drawing.Size(129, 82);
             this.DiscountBox.TabIndex = 10;
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 338);
+            this.ClientSize = new System.Drawing.Size(152, 292);
             this.ControlBox = false;
             this.Controls.Add(this.DiscountBox);
             this.Controls.Add(this.discountValueBox);

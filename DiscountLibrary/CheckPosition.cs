@@ -25,8 +25,15 @@ namespace Discount
         /// <param name="product"></param>
         public CheckPosition(DiscountBase discount, Product product)
         {
-            _discountBase = discount;
-            _product = product;
+            if (_discountBase != null && _product != null)
+            {
+                _discountBase = discount;
+                _product = product;
+            }
+            else
+            {
+                throw new ArgumentException("Аргументы = null!");
+            }
         }
 
         /// <summary>
