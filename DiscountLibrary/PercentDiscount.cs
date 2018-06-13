@@ -42,12 +42,32 @@ namespace Discount
         }
 
         /// <summary>
+        ///     Метод, возвращающий string-описание скидки
+        /// </summary>
+        /// <returns></returns>
+        public override string GetDescription()
+        {
+            return "Скидка по процентам";
+        }
+
+        /// <summary>
+        ///     Метод, возвращающий значение скидки в зависимости от её типа:
+        ///     PercentDiscount - Percent
+        /// </summary>
+        /// <returns></returns>
+        public override double GetValue()
+        {
+            return Percent;
+        }
+
+        /// <summary>
         ///     Расчёт итоговой стоимости товара со скидкой
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>
         public override double Calculate(double price)
         {
+            CheckPrice(price);
             return price - price / 100 * _percent;
         }
     }

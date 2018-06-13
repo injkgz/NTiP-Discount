@@ -180,7 +180,7 @@
             this.searchBox.Size = new System.Drawing.Size(116, 20);
             this.searchBox.TabIndex = 5;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
-            this.searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBox_KeyPress);
+            this.searchBox.Validating += new System.ComponentModel.CancelEventHandler(this.searchBox_Validating);
             // 
             // label1
             // 

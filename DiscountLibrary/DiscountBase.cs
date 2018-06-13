@@ -8,11 +8,39 @@ namespace Discount
     [Serializable]
     public abstract class DiscountBase
     {
+        //TODO: Нужна проверка входного параметра
+        //+
         /// <summary>
         ///     Расчёт итоговой цены товара
         /// </summary>
         /// <param name="price"></param>
         /// <returns></returns>
         public abstract double Calculate(double price);
+
+        /// <summary>
+        ///     Метод, возвращающий string-описание скидки
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetDescription();
+
+        /// <summary>
+        ///     Метод, возвращающий значение скидки в зависимости от её типа:
+        ///     CouponDiscount - CouponValue
+        ///     PercentDiscount - Percent
+        /// </summary>
+        /// <returns></returns>
+        public abstract double GetValue();
+
+        /// <summary>
+        ///     Проверка корректного Price
+        /// </summary>
+        /// <param name="price"></param>
+        protected void CheckPrice(double price)
+        {
+            if (price < 0 && price < double.MaxValue)
+            {
+                throw new ArgumentException("Некорректная цена для расчёта скидки");
+            }
+        }
     }
 }

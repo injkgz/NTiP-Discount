@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using Discount;
+using static DiscountForms.FormTools;
 
 namespace DiscountForms
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        ///     Лист, хранящий сущности CheckPosition
+        /// </summary>
         private readonly List<CheckPosition> _checkList = new List<CheckPosition>();
 
         /// <summary>
@@ -16,8 +21,9 @@ namespace DiscountForms
         /// </summary>
         private readonly BinaryFormatter _formatter;
 
-        private bool _isDotinTextBox;
-
+        /// <summary>
+        ///     Конструктор MainForm
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -29,6 +35,11 @@ namespace DiscountForms
 #endif
         }
 
+        /// <summary>
+        ///     Добавление элемента с выбранными атрибутами, вызов AddDialogForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
             var form = new AddDialogForm(bindingSourceCheckPosition);
@@ -44,6 +55,11 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Заполнение случайными данными
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
@@ -62,7 +78,7 @@ namespace DiscountForms
         {
             try
             {
-                var fileStream = new FileStream("checkList.injkgz",
+                var fileStream = new FileStream("checkList.inj",
                     FileMode.OpenOrCreate);
 
                 _formatter.Serialize(fileStream, _checkList);
@@ -72,13 +88,13 @@ namespace DiscountForms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadMenuItem_Click(object sender, EventArgs e)
         {
-            var fileStream = new FileStream("checkList.injkgz",
+            var fileStream = new FileStream("checkList.inj",
                 FileMode.OpenOrCreate);
 
             var deserializeCheckPositions = (List<CheckPosition>) _formatter.Deserialize(fileStream);
@@ -116,38 +132,26 @@ namespace DiscountForms
             }
         }
 
-        private void searchBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (_isDotinTextBox == false)
-            {
-                if (e.KeyChar == 46)
-                {
-                    _isDotinTextBox = true;
-                }
-
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != 46)
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                if (!char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
+        /// <summary>
+        ///     Блокирование кнопки при пустом TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            if (searchBox.Text.Length == 0)
+            searchButton.Enabled = searchBox.Text.Length != 0;
+        }
+
+        /// <summary>
+        ///     Ограничение на ввод символов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void searchBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (searchBox.Text != "")
             {
-                searchButton.Enabled = false;
-            }
-            else
-            {
-                searchButton.Enabled = true;
+                e.Cancel = !CheckStringForDouble(searchBox.Text);
             }
         }
     }

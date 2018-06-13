@@ -34,6 +34,8 @@ namespace Discount
         /// </summary>
         public double CheckPositionPrice => _product.Price;
 
+        //TODO:
+        //+
         /// <summary>
         ///     Вернуть через string название типа скидки
         /// </summary>
@@ -41,12 +43,9 @@ namespace Discount
         {
             get
             {
-                switch (_discountBase)
+                if (_discountBase != null)
                 {
-                    case CouponDiscount _:
-                        return "Скидка по купону";
-                    case PercentDiscount _:
-                        return "Скидка по процентам";
+                    return _discountBase.GetDescription();
                 }
 
                 return "Нет скидки";
@@ -58,6 +57,8 @@ namespace Discount
         /// </summary>
         public double CheckPositionDiscount => _discountBase.Calculate(_product.Price);
 
+        //TODO:
+        //+
         /// <summary>
         ///     Вернуть значение скидки в зависимости от типа
         /// </summary>
@@ -65,12 +66,9 @@ namespace Discount
         {
             get
             {
-                switch (_discountBase)
+                if (_discountBase != null)
                 {
-                    case CouponDiscount temp:
-                        return temp.CouponValue;
-                    case PercentDiscount temp:
-                        return temp.Percent;
+                    return _discountBase.GetValue();
                 }
 
                 return 0;

@@ -1,18 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using Discount;
+using static DiscountForms.FormTools;
 
 namespace DiscountForms
 {
     public partial class AddDialogForm : Form
     {
+        /// <summary>
+        ///     Источник данных
+        /// </summary>
         private readonly BindingSource _bindingSourceCheckPosition;
-        private Discounts _discountType;
-        private double _discountValue;
-        private double _price;
-        private bool _isDotinTextBox1;
-        private bool _isDotinTextBox2;
 
+        /// <summary>
+        ///     Конструктор формы Dialog
+        /// </summary>
+        /// <param name="bindingSourceCheckPosition"></param>
         public AddDialogForm(BindingSource bindingSourceCheckPosition)
         {
             InitializeComponent();
@@ -21,79 +26,57 @@ namespace DiscountForms
             couponRadioButton.Checked = true;
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            _price = Convert.ToDouble(priceBox.Text);
-            _discountValue = Convert.ToDouble(discountValueBox.Text);
+            var discountType = Discounts.Percent;
             if (percentRadioButton.Checked)
             {
-                _discountType = Discounts.Percent;
+                discountType = Discounts.Percent;
             }
             else if (couponRadioButton.Checked)
             {
-                _discountType = Discounts.Coupon;
+                discountType = Discounts.Coupon;
             }
 
-            AddElementsInList();
+            AddElementsInList(Convert.ToDouble(discountValueBox.Text),
+                Convert.ToDouble(priceBox.Text), discountType);
             Close();
         }
 
-        private void AddElementsInList()
+        /// <summary>
+        /// Метод добавления элементов в таблицу
+        /// </summary>
+        /// <param name="discountValue"></param>
+        /// <param name="price"></param>
+        /// <param name="discountType"></param>
+        private void AddElementsInList(double discountValue, double price, Discounts discountType)
         {
-            switch (_discountType)
+            switch (discountType)
             {
                 case Discounts.Coupon:
                 {
-                    _bindingSourceCheckPosition.Add(new CheckPosition(new CouponDiscount(_discountValue),
-                        new Product(_price)));
+                    _bindingSourceCheckPosition.Add(new CheckPosition(
+                        new CouponDiscount(discountValue),
+                        new Product(price)));
                     break;
                 }
                 case Discounts.Percent:
                 {
-                    _bindingSourceCheckPosition.Add(new CheckPosition(new PercentDiscount(_discountValue),
-                        new Product(_price)));
+                    _bindingSourceCheckPosition.Add(new CheckPosition(
+                        new PercentDiscount(discountValue),
+                        new Product(price)));
                     break;
                 }
             }
         }
 
-        private void priceBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void PriceBox_TextChanged(object sender, EventArgs e)
         {
-            if (_isDotinTextBox1 == false)
-            {
-                if (e.KeyChar == 46)
-                {
-                    _isDotinTextBox1 = true;
-                }
-
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != 46)
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                if (!char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void priceBox_TextChanged(object sender, EventArgs e)
-        {
-            if (priceBox.Text.Length == 0)
-            {
-                buttonAdd.Enabled = false;
-            }
-            else
-            {
-                buttonAdd.Enabled = true;
-            }
+            buttonAdd.Enabled = priceBox.Text.Length != 0;
         }
 
 
-        private void discountValueBox_TextChanged(object sender, EventArgs e)
+        private void DiscountValueBox_TextChanged(object sender, EventArgs e)
         {
             if (priceBox.Text.Length == 0)
             {
@@ -108,9 +91,9 @@ namespace DiscountForms
                         discountValueBox.Text = "100";
                     }
                 }
-                catch
+                catch (FormatException exception)
                 {
-                    // ignored
+                    MessageBox.Show(exception.Message);
                 }
             }
             else
@@ -119,43 +102,36 @@ namespace DiscountForms
             }
         }
 
-        private void discountValueBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void DiscountValueBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (percentRadioButton.Checked == false && couponRadioButton.Checked == false)
             {
                 MessageBox.Show("Выберите сначала тип скидки!", "Ошибка!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (_isDotinTextBox2 == false)
-            {
-                if (e.KeyChar == 46)
-                {
-                    _isDotinTextBox2 = true;
-                }
-
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != 46)
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                if (!char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
         }
 
-        private void percentRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void PercentRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             discountValueBox.Clear();
         }
 
-        private void couponRadionButton_CheckedChanged(object sender, EventArgs e)
+        private void PriceBox_Validating(object sender, CancelEventArgs e)
         {
-            discountValueBox.Clear();
+            if (priceBox.Text != "")
+            {
+                e.Cancel = !CheckStringForDouble(priceBox.Text);
+            }
+            
+        }
+
+        private void discountValueBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (discountValueBox.Text != "")
+            {
+                e.Cancel = !CheckStringForDouble(discountValueBox.Text);
+            }
+           
         }
     }
 }

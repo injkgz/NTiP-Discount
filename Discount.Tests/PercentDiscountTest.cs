@@ -7,28 +7,39 @@ namespace Discount.Tests
     public class PercentDiscountTest
     {
         /// <summary>
-        ///     Тестирование метода Calculate
+        ///     Позитивное тестирование метода Calculate
         /// </summary>
         /// <param name="price"></param>
         /// <param name="value"></param>
         /// <param name="result"></param>
         [Test]
-        [TestCase(1000, 10, 900)]
-        [TestCase(2000, 20, 1600)]
+        [TestCase(1000, 10, 900, TestName = "Проверка " +
+                                            "присваивания рандомных значений")]
+        [TestCase(2000, 20, 1600, TestName = "Проверка " +
+                                             "присваивания рандомных значений")]
         public void PercentCalculateTest(double price, double value, double result)
         {
+            //TODO: Негативное тестирование подаваемого в calculate price
             var discount = new PercentDiscount(value);
             Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
         }
 
-        //[Test]
-        //[TestCase(1000, 200)]
-        //[TestCase(2000, 300)]
-        //public void PercentCalculateTest(double price, double value)
-        //{
-        //    var discount = new PercentDiscount(value);
-        //    Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
-        //}
+        /// <summary>
+        ///     Негативное тестирование метода Calculate
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="value"></param>
+        [Test]
+        [TestCase(-1, 99, TestName = "Проверка присваивания " +
+                                     "некорректного значения price")]
+        [TestCase(double.MinValue, 99, TestName = "Проверка присваивания " +
+                                                  "минимального значения Double")]
+        public void PercentCalculateTestThrows(double price, double value)
+        {
+            //TODO: Негативное тестирование подаваемого в calculate price
+            var discount = new PercentDiscount(value);
+            Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
+        }
 
         /// <summary>
         ///     Положительное тестирование конструктора
@@ -36,24 +47,33 @@ namespace Discount.Tests
         /// <param name="value"></param>
         /// <returns></returns>
         [Test]
-        [TestCase(1, ExpectedResult = 1)]
-        [TestCase(100, ExpectedResult = 100)]
-        [TestCase(11, ExpectedResult = 11)]
+        [TestCase(1, ExpectedResult = 1, TestName = "Проверка присваивания " +
+                                                    "минимального логического значения")]
+        [TestCase(100, ExpectedResult = 100, TestName = "Проверка присваивания " +
+                                                        "максимального логического значения")]
+        [TestCase(11, ExpectedResult = 11, TestName = "Проверка " +
+                                                      "присваивания значений 11, 11")]
         public double PercentDiscountConstructorTest(double value)
         {
             var discount = new PercentDiscount(value);
             return discount.Percent;
         }
 
+        //TODO:
+        //+
         /// <summary>
         ///     Негативное тестирование конструктора
         /// </summary>
         /// <param name="value"></param>
         [Test]
-        [TestCase(0)]
-        [TestCase(-1)]
-        [TestCase(int.MinValue)]
-        [TestCase(int.MaxValue)]
+        [TestCase(0, TestName = "Проверка присваивания 0")]
+        [TestCase(-1, TestName = "Проверка присваивания отрицательного значения")]
+        [TestCase(101, TestName = "Проверка присваивания значения, " +
+                                  "не входящего в логический диапазон")]
+        [TestCase(double.MinValue, TestName = "Проверка присваивания " +
+                                              "минимального значения Double")]
+        [TestCase(double.MaxValue, TestName = "Проверка присваивания " +
+                                              "максимального значения Double")]
         public void PercentDiscountConstructorTestThrows(double value)
         {
             Assert.That(() => new PercentDiscount(value), Throws.TypeOf<ArgumentException>());
