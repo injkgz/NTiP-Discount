@@ -19,7 +19,6 @@ namespace Discount.Tests
                                              "присваивания рандомных значений")]
         public void PercentCalculateTest(double price, double value, double result)
         {
-            //TODO: Негативное тестирование подаваемого в calculate price
             var discount = new PercentDiscount(value);
             Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
         }
@@ -36,7 +35,6 @@ namespace Discount.Tests
                                                   "минимального значения Double")]
         public void PercentCalculateTestThrows(double price, double value)
         {
-            //TODO: Негативное тестирование подаваемого в calculate price
             var discount = new PercentDiscount(value);
             Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
         }
@@ -59,8 +57,6 @@ namespace Discount.Tests
             return discount.Percent;
         }
 
-        //TODO:
-        //+
         /// <summary>
         ///     Негативное тестирование конструктора
         /// </summary>

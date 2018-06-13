@@ -20,8 +20,6 @@ namespace Discount
         /// <returns></returns>
         public abstract string Description { get; set; }
 
-        //TODO: Нужна проверка входного параметра
-        //+
         /// <summary>
         ///     Расчёт итоговой цены товара
         /// </summary>
@@ -35,7 +33,7 @@ namespace Discount
         ///     PercentDiscount - Percent
         /// </summary>
         /// <returns></returns>
-        public abstract double GetValue();
+        public abstract double Value();
 
         /// <summary>
         ///     Проверка корректного Price

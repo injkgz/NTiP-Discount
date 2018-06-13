@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace DiscountForms
 {
@@ -18,7 +21,27 @@ namespace DiscountForms
             }
 
             return Regex.IsMatch(text, @"^([0-9]*|[0-9]*[,][0-9]*)$");
-            ;
+        }
+
+        /// <summary>
+        ///     Проверка ввода корректного Double в TextBox
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <param name="e"></param>
+        public static void TextBoxCheck(TextBox textBox, CancelEventArgs e)
+        {
+            if (textBox.Text != "")
+            {
+                e.Cancel = !CheckStringForDouble(textBox.Text);
+                if (e.Cancel)
+                {
+                    textBox.ForeColor = Color.Red;
+                }
+                else
+                {
+                    textBox.ForeColor = Color.Black;
+                }
+            }
         }
     }
 }

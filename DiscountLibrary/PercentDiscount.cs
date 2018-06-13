@@ -59,7 +59,7 @@ namespace Discount
         ///     PercentDiscount - Percent
         /// </summary>
         /// <returns></returns>
-        public override double GetValue()
+        public override double Value()
         {
             return Percent;
         }

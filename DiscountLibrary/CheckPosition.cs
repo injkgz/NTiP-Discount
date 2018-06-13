@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Discount
 {
@@ -15,6 +16,11 @@ namespace Discount
         /// <param name="product"></param>
         public CheckPosition(DiscountBase discount, Product product)
         {
+            if (discount == null && product == null)
+            {
+                throw new ArgumentException("NULL!");
+            }
+
             DiscountBase = discount;
             Product = product;
         }
@@ -40,8 +46,6 @@ namespace Discount
             set => Product.Price = value;
         }
 
-        //TODO:
-        //+
         /// <summary>
         ///     Вернуть через string название типа скидки
         /// </summary>
@@ -54,7 +58,7 @@ namespace Discount
                     return DiscountBase.Description;
                 }
 
-                return "Нет скидки";
+                throw new ArgumentException("Null!!!");
             }
         }
 
@@ -63,8 +67,6 @@ namespace Discount
         /// </summary>
         public double CheckPositionDiscount => DiscountBase.Calculate(Product.Price);
 
-        //TODO:
-        //+
         /// <summary>
         ///     Вернуть значение скидки в зависимости от типа
         /// </summary>
@@ -74,10 +76,10 @@ namespace Discount
             {
                 if (DiscountBase != null)
                 {
-                    return DiscountBase.GetValue();
+                    return DiscountBase.Value();
                 }
 
-                return 0;
+                throw new ArgumentException("NULL!!!");
             }
         }
     }

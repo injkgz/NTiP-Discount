@@ -21,6 +21,8 @@ namespace DiscountForms
         public MainForm()
         {
             InitializeComponent();
+            ShowObject.Visible = false;
+            ShowObject.ReadOnly = true;
             bindingSourceCheckPosition.DataSource = _checkList;
             productTable.DataSource = bindingSourceCheckPosition;
 #if !DEBUG
@@ -35,8 +37,12 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ButtonAddProduct_Click(object sender, EventArgs e)
         {
-            var form = new AddDialogForm(bindingSourceCheckPosition);
+            var form = new AddDialogForm();
             form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                _checkList.Add(form.Object);
+            }
         }
 
         /// <summary>
@@ -145,10 +151,30 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void SearchBox_Validating(object sender, CancelEventArgs e)
         {
-            if (searchBox.Text != "")
+            TextBoxCheck(searchBox, e);
+        }
+
+        /// <summary>
+        ///     Отображение в контроле выбранной ячейки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void productTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var currentCheck = _checkList[productTable.CurrentRow.Index];
+            switch (currentCheck.DiscountType)
             {
-                e.Cancel = !CheckStringForDouble(searchBox.Text);
+                case "Скидка по процентам":
+                    ShowObject.DiscountsType = Discounts.Percent;
+                    break;
+                case "Скидка по купону":
+                    ShowObject.DiscountsType = Discounts.Coupon;
+                    break;
             }
+
+            ShowObject.DiscountValue = currentCheck.DiscountValue.ToString();
+            ShowObject.Price = currentCheck.CheckPositionPrice.ToString();
+            ShowObject.Visible = true;
         }
     }
 }

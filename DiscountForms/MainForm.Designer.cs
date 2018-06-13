@@ -48,6 +48,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ShowObject = new DiscountForms.ModifyObject();
             ((System.ComponentModel.ISupportInitialize)(this.productTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkPositionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCheckPosition)).BeginInit();
@@ -69,8 +70,9 @@
             this.productTable.Location = new System.Drawing.Point(12, 28);
             this.productTable.Name = "productTable";
             this.productTable.ReadOnly = true;
-            this.productTable.Size = new System.Drawing.Size(623, 410);
+            this.productTable.Size = new System.Drawing.Size(599, 423);
             this.productTable.TabIndex = 0;
+            this.productTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productTable_CellClick);
             // 
             // checkPositionPriceDataGridViewTextBoxColumn
             // 
@@ -114,7 +116,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(641, 342);
+            this.buttonAdd.Location = new System.Drawing.Point(620, 355);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(116, 43);
             this.buttonAdd.TabIndex = 1;
@@ -124,7 +126,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(642, 391);
+            this.deleteButton.Location = new System.Drawing.Point(621, 404);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(115, 47);
             this.deleteButton.TabIndex = 2;
@@ -134,7 +136,7 @@
             // 
             // buttonAddRandom
             // 
-            this.buttonAddRandom.Location = new System.Drawing.Point(641, 28);
+            this.buttonAddRandom.Location = new System.Drawing.Point(617, 28);
             this.buttonAddRandom.Name = "buttonAddRandom";
             this.buttonAddRandom.Size = new System.Drawing.Size(116, 41);
             this.buttonAddRandom.TabIndex = 3;
@@ -148,7 +150,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(762, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(753, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -177,7 +179,7 @@
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(641, 155);
+            this.searchBox.Location = new System.Drawing.Point(617, 88);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(116, 20);
             this.searchBox.TabIndex = 5;
@@ -187,7 +189,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(641, 139);
+            this.label1.Location = new System.Drawing.Point(617, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 13);
             this.label1.TabIndex = 6;
@@ -195,7 +197,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(641, 182);
+            this.searchButton.Location = new System.Drawing.Point(617, 115);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(116, 23);
             this.searchButton.TabIndex = 7;
@@ -207,11 +209,22 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // ShowObject
+            // 
+            this.ShowObject.DiscountsType = DiscountForms.Discounts.Coupon;
+            this.ShowObject.DiscountValue = "";
+            this.ShowObject.Location = new System.Drawing.Point(617, 144);
+            this.ShowObject.Name = "ShowObject";
+            this.ShowObject.Price = "";
+            this.ShowObject.Size = new System.Drawing.Size(124, 205);
+            this.ShowObject.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 442);
+            this.ClientSize = new System.Drawing.Size(753, 461);
+            this.Controls.Add(this.ShowObject);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBox);
@@ -255,6 +268,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private ModifyObject ShowObject;
     }
 }
 
