@@ -1,6 +1,6 @@
 ﻿namespace DiscountForms
 {
-    partial class FormDialogAdd
+    partial class AddDialogForm
     {
         /// <summary>
         /// Required designer variable.

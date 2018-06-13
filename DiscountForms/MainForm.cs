@@ -31,7 +31,7 @@ namespace DiscountForms
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
-            var form = new FormDialogAdd(bindingSourceCheckPosition);
+            var form = new AddDialogForm(bindingSourceCheckPosition);
             form.ShowDialog();
         }
 

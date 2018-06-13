@@ -4,7 +4,7 @@ using Discount;
 
 namespace DiscountForms
 {
-    public partial class FormDialogAdd : Form
+    public partial class AddDialogForm : Form
     {
         private readonly BindingSource _bindingSourceCheckPosition;
         private Discounts _discountType;
@@ -13,7 +13,7 @@ namespace DiscountForms
         private bool _isDotinTextBox1;
         private bool _isDotinTextBox2;
 
-        public FormDialogAdd(BindingSource bindingSourceCheckPosition)
+        public AddDialogForm(BindingSource bindingSourceCheckPosition)
         {
             InitializeComponent();
             _bindingSourceCheckPosition = bindingSourceCheckPosition;
