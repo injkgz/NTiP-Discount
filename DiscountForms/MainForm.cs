@@ -68,17 +68,17 @@ namespace DiscountForms
         private void ButtonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
-            double price = random.Next(100, 10000);
-            double discountValue = random.Next(50, 9800);
+            double price = random.Next(100, 1000);
+            double discountValue = random.Next(50, 700);
             _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
                     (Discounts.Coupon, discountValue),
                 new Product(price)));
 
-            price = random.Next(100, 10000);
-            discountValue = random.Next(1, 90);
+            double secondPrice = random.Next(100, 1000);
+            double Value = random.Next(1, 90);
             _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
-                    (Discounts.Percent, discountValue),
-                new Product(price)));
+                    (Discounts.Percent, Value),
+                new Product(secondPrice)));
         }
 
         /// <summary>
