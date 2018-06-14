@@ -33,14 +33,8 @@ namespace DiscountForms
             if (textBox.Text != "")
             {
                 e.Cancel = !CheckStringForDouble(textBox.Text);
-                if (e.Cancel)
-                {
-                    textBox.ForeColor = Color.Red;
-                }
-                else
-                {
-                    textBox.ForeColor = Color.Black;
-                }
+
+                textBox.ForeColor = e.Cancel ? Color.Red : Color.Black;
             }
         }
     }

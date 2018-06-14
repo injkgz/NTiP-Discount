@@ -5,8 +5,16 @@ using static DiscountForms.FormTools;
 
 namespace DiscountForms
 {
+    /// <summary>
+    /// TODO:XML
+    /// Контрол ModifyObject
+    /// </summary>
     public partial class ModifyObject : UserControl
     {
+        /// <summary>
+        /// TODO:XML
+        /// Инициализация ModifyObject
+        /// </summary>
         public ModifyObject()
         {
             InitializeComponent();
@@ -21,6 +29,7 @@ namespace DiscountForms
             {
                 PriceBox.ReadOnly = value;
                 ValueBox.ReadOnly = value;
+                DiscountBox.Enabled = !value;
             }
         }
 
@@ -39,25 +48,19 @@ namespace DiscountForms
         /// </summary>
         public Discounts DiscountsType
         {
-            get
-            {
-                if (PercentRadioButton.Checked)
-                {
-                    return Discounts.Percent;
-                }
-
-                return Discounts.Coupon;
-            }
+            get => PercentRadioButton.Checked 
+                ? Discounts.Percent 
+                : Discounts.Coupon;
             set
             {
-                if (value == Discounts.Percent)
+                switch (value)
                 {
-                    PercentRadioButton.Checked = true;
-                }
-
-                else if (value == Discounts.Coupon)
-                {
-                    CouponRadioButton.Checked = true;
+                    case Discounts.Percent:
+                        PercentRadioButton.Checked = true;
+                        break;
+                    case Discounts.Coupon:
+                        CouponRadioButton.Checked = true;
+                        break;
                 }
             }
         }

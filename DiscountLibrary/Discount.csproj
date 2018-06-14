@@ -50,6 +50,8 @@
     <Compile Include="CouponDiscount.cs" />
     <Compile Include="DiscountBase.cs" />
     <Compile Include="CheckPosition.cs" />
+    <Compile Include="DiscountFactory.cs" />
+    <Compile Include="DiscountsEnum.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PercentDiscount.cs" />

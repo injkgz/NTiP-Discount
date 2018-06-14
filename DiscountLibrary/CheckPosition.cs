@@ -18,7 +18,8 @@ namespace Discount
         {
             if (discount == null && product == null)
             {
-                throw new ArgumentException("NULL!");
+                throw new ArgumentException("Discount и Product " +
+                                            "не инициализированы! Равны NULL!");
             }
 
             DiscountBase = discount;
@@ -57,8 +58,8 @@ namespace Discount
                 {
                     return DiscountBase.Description;
                 }
-
-                throw new ArgumentException("Null!!!");
+                throw new ArgumentException("Discount и Product " +
+                                            "не инициализированы! Равны NULL!");
             }
         }
 
@@ -78,8 +79,8 @@ namespace Discount
                 {
                     return DiscountBase.Value();
                 }
-
-                throw new ArgumentException("NULL!!!");
+                throw new ArgumentException("Discount и Product " +
+                                            "не инициализированы! Равны NULL!");
             }
         }
     }

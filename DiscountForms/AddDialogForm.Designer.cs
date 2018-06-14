@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.AddControl = new DiscountForms.ModifyObject();
-            this.ControlObject = new DiscountForms.ModifyObject();
+            this.ObjectControl = new DiscountForms.ModifyObject();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -43,25 +42,15 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
-            // AddControl
+            // ObjectControl
             // 
-            this.AddControl.DiscountsType = DiscountForms.Discounts.Coupon;
-            this.AddControl.DiscountValue = "";
-            this.AddControl.Location = new System.Drawing.Point(12, 12);
-            this.AddControl.Name = "AddControl";
-            this.AddControl.Price = "";
-            this.AddControl.Size = new System.Drawing.Size(141, 202);
-            this.AddControl.TabIndex = 1;
-            // 
-            // ControlObject
-            // 
-            this.ControlObject.DiscountsType = DiscountForms.Discounts.Coupon;
-            this.ControlObject.DiscountValue = "";
-            this.ControlObject.Location = new System.Drawing.Point(4, 12);
-            this.ControlObject.Name = "ControlObject";
-            this.ControlObject.Price = "";
-            this.ControlObject.Size = new System.Drawing.Size(145, 205);
-            this.ControlObject.TabIndex = 1;
+            this.ObjectControl.DiscountsType = DiscountForms.Discounts.Coupon;
+            this.ObjectControl.DiscountValue = "";
+            this.ObjectControl.Location = new System.Drawing.Point(4, 9);
+            this.ObjectControl.Name = "ObjectControl";
+            this.ObjectControl.Price = "";
+            this.ObjectControl.Size = new System.Drawing.Size(145, 205);
+            this.ObjectControl.TabIndex = 1;
             // 
             // AddDialogForm
             // 
@@ -69,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(156, 271);
             this.ControlBox = false;
-            this.Controls.Add(this.ControlObject);
+            this.Controls.Add(this.ObjectControl);
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddDialogForm";
@@ -86,5 +75,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private ModifyObject AddControl;
         private ModifyObject ControlObject;
+        private ModifyObject ObjectControl;
     }
 }

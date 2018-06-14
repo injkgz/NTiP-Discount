@@ -72,7 +72,7 @@
             this.productTable.ReadOnly = true;
             this.productTable.Size = new System.Drawing.Size(599, 423);
             this.productTable.TabIndex = 0;
-            this.productTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productTable_CellClick);
+            this.productTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductTable_CellClick);
             // 
             // checkPositionPriceDataGridViewTextBoxColumn
             // 
@@ -142,7 +142,7 @@
             this.buttonAddRandom.TabIndex = 3;
             this.buttonAddRandom.Text = "RANDOM";
             this.buttonAddRandom.UseVisualStyleBackColor = true;
-            this.buttonAddRandom.Click += new System.EventHandler(this.buttonAddRandom_Click);
+            this.buttonAddRandom.Click += new System.EventHandler(this.ButtonAddRandom_Click);
             // 
             // menuStrip1
             // 

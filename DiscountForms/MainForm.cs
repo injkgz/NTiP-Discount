@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Discount;
+using DiscountForms.Properties;
 using static DiscountForms.FormTools;
 using static DiscountForms.Serialization;
 
@@ -64,17 +65,19 @@ namespace DiscountForms
         /// </summary>
         /// <param name="sender">Отправитель события</param>
         /// <param name="e">Аргументы события</param>
-        private void buttonAddRandom_Click(object sender, EventArgs e)
+        private void ButtonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
             double price = random.Next(100, 10000);
             double discountValue = random.Next(50, 9800);
-            _checkList.Add(new CheckPosition(new CouponDiscount(discountValue),
+            _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
+                    (Discounts.Coupon, discountValue),
                 new Product(price)));
 
             price = random.Next(100, 10000);
             discountValue = random.Next(1, 90);
-            _checkList.Add(new CheckPosition(new PercentDiscount(discountValue),
+            _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
+                    (Discounts.Percent, discountValue),
                 new Product(price)));
         }
 
@@ -85,7 +88,7 @@ namespace DiscountForms
         /// <param name="e">Аргументы события</param>
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Filter = "CheckPositionList|*.inj";
+            saveFileDialog.Filter = Resources.FileExtention;
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -100,11 +103,20 @@ namespace DiscountForms
         /// <param name="e">Аргументы события</param>
         private void LoadMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog.Filter = "CheckPositionList|*.inj";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                _checkList = Open(openFileDialog.FileName);
-                productTable.DataSource = _checkList;
+                openFileDialog.Filter = Resources.FileExtention;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    _checkList = Open(openFileDialog.FileName);
+                    productTable.DataSource = _checkList;
+                }
+            }
+            catch (Exception exception)
+            {
+                //TODO: Непонятное сообщение!!!
+                MessageBox.Show("Неверный формат файла! Попробуйте другой! \n"
+                                + exception.Message);
             }
         }
 
@@ -141,6 +153,11 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            if (searchBox.Text == "")
+            {
+                bindingSourceCheckPosition.DataSource = _checkList;
+            }
+
             searchButton.Enabled = searchBox.Text.Length != 0;
         }
 
@@ -154,12 +171,13 @@ namespace DiscountForms
             TextBoxCheck(searchBox, e);
         }
 
+        //TODO:
         /// <summary>
         ///     Отображение в контроле выбранной ячейки
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void productTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void ProductTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var currentCheck = _checkList[productTable.CurrentRow.Index];
             switch (currentCheck.DiscountType)

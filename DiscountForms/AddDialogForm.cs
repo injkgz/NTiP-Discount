@@ -12,35 +12,16 @@ namespace DiscountForms
         public AddDialogForm()
         {
             InitializeComponent();
-            ControlObject.ReadOnly = false;
+            ObjectControl.ReadOnly = false;
         }
 
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
-        public CheckPosition Object
-        {
-            get
-            {
-                switch (ControlObject.DiscountsType)
-                {
-                    case Discounts.Coupon:
-                    {
-                        return new CheckPosition(new CouponDiscount
-                                (Convert.ToDouble(ControlObject.DiscountValue)),
-                            new Product(Convert.ToDouble(ControlObject.Price)));
-                    }
-                    case Discounts.Percent:
-                    {
-                        return new CheckPosition(new PercentDiscount
-                                (Convert.ToDouble(ControlObject.DiscountValue)),
-                            new Product(Convert.ToDouble(ControlObject.Price)));
-                    }
-                }
-
-                return null;
-            }
-        }
+        public CheckPosition Object => new CheckPosition(DiscountFactory.GetDiscount
+            (ObjectControl.DiscountsType,
+                Convert.ToDouble(ObjectControl.DiscountValue)),
+            new Product(Convert.ToDouble(ObjectControl.Price)));
 
         /// <summary>
         ///     Обработчик события нажатия на кнопку Добавить
@@ -49,8 +30,8 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            if (ControlObject.DiscountValue != "" && ControlObject.Price != ""
-                                                  && ControlObject.DiscountsType != null)
+            if (ObjectControl.DiscountValue != "" && ObjectControl.Price != ""
+                                                  && ObjectControl.DiscountsType != null)
             {
                 DialogResult = DialogResult.OK;
             }
