@@ -6,6 +6,7 @@ namespace Discount.Tests
     [TestFixture]
     public class PercentDiscountTest
     {
+        //TODO: Тесты должны покрывать всю публичную часть класса!
         /// <summary>
         ///     Позитивное тестирование метода Calculate
         /// </summary>

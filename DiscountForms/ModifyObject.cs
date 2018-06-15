@@ -6,13 +6,11 @@ using static DiscountForms.FormTools;
 namespace DiscountForms
 {
     /// <summary>
-    /// TODO:XML
     /// Контрол ModifyObject
     /// </summary>
     public partial class ModifyObject : UserControl
     {
         /// <summary>
-        /// TODO:XML
         /// Инициализация ModifyObject
         /// </summary>
         public ModifyObject()
@@ -33,7 +31,7 @@ namespace DiscountForms
             }
         }
 
-
+        //TODO: Не нужно на public
         /// <summary>
         ///     Вернуть и установить цену
         /// </summary>
@@ -43,6 +41,7 @@ namespace DiscountForms
             set => PriceBox.Text = value;
         }
 
+        //TODO: Не нужно на public set
         /// <summary>
         ///     Вернуть и установить тип скидки
         /// </summary>
@@ -65,6 +64,7 @@ namespace DiscountForms
             }
         }
 
+        //TODO: Не нужно на public set
         /// <summary>
         ///     Вернуть и установить DiscountValue
         /// </summary>
@@ -81,6 +81,7 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ValueBox_Validating(object sender, CancelEventArgs e)
         {
+            //TODO: Ниже дубль - можно всё привязать к одному обработчику.
             TextBoxCheck(ValueBox, e);
         }
 

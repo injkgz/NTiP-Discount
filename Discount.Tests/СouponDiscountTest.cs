@@ -6,6 +6,7 @@ namespace Discount.Tests
     [TestFixture]
     public class СouponDiscountTest
     {
+        //TODO: Тесты должны покрывать всю публичную часть класса!
         /// <summary>
         ///     Положительное тестирование конструктора сущности CouponDiscount
         /// </summary>

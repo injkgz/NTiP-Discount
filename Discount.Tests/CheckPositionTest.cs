@@ -6,6 +6,7 @@ namespace Discount.Tests
     [TestFixture]
     public class CheckPositionTest
     {
+        //TODO: Тесты должны покрывать всю публичную часть класса!
         /// <summary>
         ///     Негативное тестирование конструктора CheckPosition
         /// </summary>

@@ -43,6 +43,7 @@ namespace Discount
             }
         }
 
+        //TODO: Зачем публичный set?
         /// <summary>
         ///     Метод, возвращающий string-описание скидки
         /// </summary>

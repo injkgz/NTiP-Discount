@@ -26,12 +26,14 @@ namespace Discount
             Product = product;
         }
 
+        //TODO: Зачем публичный set?
         /// <summary>
         ///     Скидка
         /// </summary>
         [DataMember]
         public DiscountBase DiscountBase { get; set; }
 
+        //TODO: Зачем публичный set?
         /// <summary>
         ///     Товар
         /// </summary>
@@ -58,6 +60,7 @@ namespace Discount
                 {
                     return DiscountBase.Description;
                 }
+                //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 throw new ArgumentException("Discount и Product " +
                                             "не инициализированы! Равны NULL!");
             }
@@ -79,6 +82,7 @@ namespace Discount
                 {
                     return DiscountBase.Value();
                 }
+                //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 throw new ArgumentException("Discount и Product " +
                                             "не инициализированы! Равны NULL!");
             }

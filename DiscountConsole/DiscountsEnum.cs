@@ -1,5 +1,6 @@
 ﻿namespace DiscountConsole
 {
+    //TODO: Дублируется в проекте Discount
     /// <summary>
     ///     Типы скидок
     /// </summary>
