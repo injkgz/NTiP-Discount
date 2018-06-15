@@ -7,12 +7,6 @@ namespace Discount.Tests
     public class СouponDiscountTest
     {
         //TODO: Забыл раньше сказать - XML комментарии в тестах писать не нужно.
-        /// <summary>
-        ///     Тестирование метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
-        /// <param name="result"></param>
         [Test]
         [TestCase(1000, 10, 990, TestName = "Проверка " +
                                             "присваивания рандомных значений №1")]
@@ -26,11 +20,6 @@ namespace Discount.Tests
             Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
         }
 
-        /// <summary>
-        ///     Негативный тест метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
         [Test]
         [TestCase(-1, 2020, TestName = "Проверка " +
                                        "присваивания отрицательных значений")]
@@ -41,11 +30,6 @@ namespace Discount.Tests
             Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
         }
 
-        /// <summary>
-        ///     Положительное тестирование конструктора сущности CouponDiscount
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка " +
                                                     "присваивания рандомных значений")]
@@ -59,10 +43,6 @@ namespace Discount.Tests
             return discount.CouponValue;
         }
 
-        /// <summary>
-        ///     Негативное тестирование конструктора сущности CouponDiscount
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(-1, TestName = "Проверка присваивания отрицательных значений")]
         [TestCase(double.MinValue, TestName = "Проверка присваивания " +
@@ -72,12 +52,6 @@ namespace Discount.Tests
             Assert.That(() => new CouponDiscount(value), Throws.TypeOf<ArgumentException>());
         }
 
-
-        /// <summary>
-        ///     Положительное тестирование свойства CouponValue
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка " +
                                                     "присваивания рандомных значений")]
@@ -91,10 +65,6 @@ namespace Discount.Tests
             return discount.CouponValue;
         }
 
-        /// <summary>
-        ///     Негативное тестирование свойства CouponValue
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(-1, TestName = "Проверка присваивания отрицательных значений")]
         [TestCase(double.MinValue, TestName = "Проверка присваивания " +
@@ -104,10 +74,6 @@ namespace Discount.Tests
             Assert.That(() => new CouponDiscount(value), Throws.TypeOf<ArgumentException>());
         }
 
-        /// <summary>
-        ///     Тестирование свойства Description
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(ExpectedResult = "Скидка по купону", TestName = "Проверка корректного Get")]
         public string DescriptionTest()
@@ -116,10 +82,6 @@ namespace Discount.Tests
             return discount.Description;
         }
 
-        /// <summary>
-        ///     Тестирование свойства Value
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(ExpectedResult = 1000, TestName = "Проверка корректного Get")]
         public double ValueTest()

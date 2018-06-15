@@ -55,8 +55,8 @@ namespace DiscountForms
         {
             if (productTable.CurrentRow != null)
             {
-                if (ShowObject.Price ==
-                    _checkList[productTable.CurrentRow.Index].CheckPositionPrice.ToString())
+                if (ShowObject.GetCheckPosition().CheckPositionPrice ==
+                    _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
                 {
                     ShowObject.Visible = false;
                 }
@@ -213,12 +213,12 @@ namespace DiscountForms
                 switch (currentCheck.DiscountType)
                 {
                     case "Скидка по процентам":
-                        ShowObject.SetCheckPosition(Discounts.Percent,
-                            currentCheck.DiscountValue, currentCheck.CheckPositionPrice);
+                        ShowObject.SetCheckPosition(new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
+                            currentCheck.DiscountValue), new Product(currentCheck.CheckPositionPrice)));
                         break;
                     case "Скидка по купону":
-                        ShowObject.SetCheckPosition(Discounts.Coupon,
-                            currentCheck.DiscountValue, currentCheck.CheckPositionPrice);
+                        ShowObject.SetCheckPosition(new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
+                            currentCheck.DiscountValue), new Product(currentCheck.CheckPositionPrice)));
                         break;
                 }
 

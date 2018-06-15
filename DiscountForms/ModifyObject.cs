@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Discount;
 using static DiscountForms.FormTools;
 
 namespace DiscountForms
@@ -34,58 +35,58 @@ namespace DiscountForms
         //TODO: Не нужно на public
         //+
         //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        /// <summary>
-        ///     Вернуть и установить цену
-        /// </summary>
-        public string Price
-        {
-            get => PriceBox.Text;
-            private set => PriceBox.Text = value;
-        }
+        //+
 
         //TODO: Не нужно на public set
         //+
         //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        /// <summary>
-        ///     Вернуть и установить тип скидки
-        /// </summary>
-        public Discounts DiscountsType
-        {
-            get => PercentRadioButton.Checked
-                ? Discounts.Percent
-                : Discounts.Coupon;
-            private set
-            {
-                switch (value)
-                {
-                    case Discounts.Percent:
-                        PercentRadioButton.Checked = true;
-                        break;
-                    case Discounts.Coupon:
-                        CouponRadioButton.Checked = true;
-                        break;
-                }
-            }
-        }
+        //+
 
         //TODO: Не нужно на public set
         //+
         //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        /// <summary>
-        ///     Вернуть и установить DiscountValue
-        /// </summary>
-        public string DiscountValue
-        {
-            get => ValueBox.Text;
-            private set => ValueBox.Text = value;
-        }
+        //+
         //TODO: XML
-        public void SetCheckPosition(Discounts type, double value, double price)
+        //+
+        /// <summary>
+        ///     Вернуть сущность CheckPosition
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <param name="price"></param>
+        public CheckPosition GetCheckPosition()
         {
             //TODO: Почему объект кусками передаёте?
-            DiscountValue = value.ToString();
-            Price = price.ToString();
-            DiscountsType = type;
+            //+
+            if (PercentRadioButton.Checked)
+            {
+                return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
+                    Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+            }
+
+            return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
+                Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+        }
+
+        /// <summary>
+        ///     Установить сущность CheckPosition
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <param name="price"></param>
+        public void SetCheckPosition(CheckPosition checkPosition)
+        {
+            ValueBox.Text = checkPosition.DiscountValue.ToString();
+            PriceBox.Text = checkPosition.CheckPositionPrice.ToString();
+            switch (checkPosition.DiscountType)
+            {
+                case "Скидка по процентам":
+                    PercentRadioButton.Checked = true;
+                    break;
+                case "Скидка по купону":
+                    CouponRadioButton.Checked = true;
+                    break;
+            }
         }
 
         /// <summary>

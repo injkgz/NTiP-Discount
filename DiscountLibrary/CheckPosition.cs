@@ -62,8 +62,9 @@ namespace Discount
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
                 //TODO: "не инициализированЫ"
+                //+
                 throw new ArgumentException("Discount " +
-                                            "не инициализированы! Равны NULL!");
+                                            "не инициализирован! Равен NULL!");
             }
         }
 
@@ -87,8 +88,9 @@ namespace Discount
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
                 //TODO: "не инициализированЫ"
+                //+
                 throw new ArgumentException("Discount " +
-                                            "не инициализированы! Равны NULL!");
+                                            "не инициализирован! Равен NULL!");
             }
         }
     }

@@ -6,16 +6,20 @@ namespace Discount.Tests
     [TestFixture]
     public class PercentDiscountTest
     {
+        [Test]
+        [TestCase(11, ExpectedResult = "Скидка по процентам",
+            TestName = "Проверка корректного возвращения Description")]
+        public string DescriptionTest(double value)
+        {
+            var discount = new PercentDiscount(value);
+            return discount.Description;
+        }
+
         //TODO: Забыл раньше сказать - XML комментарии в тестах писать не нужно.
         //TODO: Тесты должны покрывать всю публичную часть класса!
         //покрывают
         //TODO: Нет.
-        /// <summary>
-        ///     Позитивное тестирование метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
-        /// <param name="result"></param>
+        //+
         [Test]
         [TestCase(1000, 10, 900, TestName = "Проверка " +
                                             "присваивания рандомных значений")]
@@ -27,11 +31,6 @@ namespace Discount.Tests
             Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
         }
 
-        /// <summary>
-        ///     Негативное тестирование метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
         [Test]
         [TestCase(-1, 99, TestName = "Проверка присваивания " +
                                      "некорректного значения price")]
@@ -43,11 +42,6 @@ namespace Discount.Tests
             Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
         }
 
-        /// <summary>
-        ///     Положительное тестирование конструктора
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка присваивания " +
                                                     "минимального логического значения")]
@@ -61,10 +55,6 @@ namespace Discount.Tests
             return discount.Percent;
         }
 
-        /// <summary>
-        ///     Негативное тестирование конструктора
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(0, TestName = "Проверка присваивания 0")]
         [TestCase(-1, TestName = "Проверка присваивания отрицательного значения")]
@@ -77,6 +67,22 @@ namespace Discount.Tests
         public void PercentDiscountConstructorTestThrows(double value)
         {
             Assert.That(() => new PercentDiscount(value), Throws.TypeOf<ArgumentException>());
+        }
+
+        [Test]
+        [TestCase(11, ExpectedResult = 11, TestName = "Проверка корректного возвращения Percent")]
+        public double PercentTest(double value)
+        {
+            var discount = new PercentDiscount(value);
+            return discount.Percent;
+        }
+
+        [Test]
+        [TestCase(11, ExpectedResult = 11, TestName = "Проверка корректного возвращения Value")]
+        public double ValueTest(double value)
+        {
+            var discount = new PercentDiscount(value);
+            return discount.Value();
         }
     }
 }

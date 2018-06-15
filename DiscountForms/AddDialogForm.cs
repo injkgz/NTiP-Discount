@@ -18,10 +18,7 @@ namespace DiscountForms
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
-        public CheckPosition Object => new CheckPosition(DiscountFactory.GetDiscount
-            (ObjectControl.DiscountsType,
-                Convert.ToDouble(ObjectControl.DiscountValue)),
-            new Product(Convert.ToDouble(ObjectControl.Price)));
+        public CheckPosition Object => ObjectControl.GetCheckPosition();
 
         /// <summary>
         ///     Обработчик события нажатия на кнопку Добавить
@@ -30,11 +27,7 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            if (ObjectControl.DiscountValue != ""
-                && ObjectControl.Price != "")
-            {
-                DialogResult = DialogResult.OK;
-            }
+            DialogResult = DialogResult.OK;
         }
     }
 }

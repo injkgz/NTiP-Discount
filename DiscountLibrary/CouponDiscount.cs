@@ -47,12 +47,7 @@ namespace Discount
         /// </summary>
         /// <returns></returns>
         [DataMember]
-        public override string Description
-        {
-            get => "Скидка по купону";
-            //TODO: Не корректное использование поля.
-            protected set => _description = value;
-        }
+        public override string Description => "Скидка по купону";
 
         /// <summary>
         ///     Метод, возвращающий значение скидки в зависимости от её типа:
