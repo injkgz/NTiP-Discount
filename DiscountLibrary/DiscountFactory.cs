@@ -3,6 +3,7 @@ using DiscountForms;
 
 namespace Discount
 {
+    //TODO: Где тест на фабрику?
     /// <summary>
     ///     Фабрика класса DiscountBase и наследников
     /// </summary>

@@ -6,6 +6,7 @@ namespace Discount.Tests
     [TestFixture]
     public class СouponDiscountTest
     {
+        //TODO: Забыл раньше сказать - XML комментарии в тестах писать не нужно.
         /// <summary>
         ///     Тестирование метода Calculate
         /// </summary>
@@ -40,7 +41,6 @@ namespace Discount.Tests
             Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
         }
 
-        //TODO: Тесты должны покрывать всю публичную часть класса!
         /// <summary>
         ///     Положительное тестирование конструктора сущности CouponDiscount
         /// </summary>

@@ -33,6 +33,7 @@ namespace DiscountForms
 
         //TODO: Не нужно на public
         //+
+        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
         /// <summary>
         ///     Вернуть и установить цену
         /// </summary>
@@ -44,6 +45,7 @@ namespace DiscountForms
 
         //TODO: Не нужно на public set
         //+
+        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
         /// <summary>
         ///     Вернуть и установить тип скидки
         /// </summary>
@@ -68,6 +70,7 @@ namespace DiscountForms
 
         //TODO: Не нужно на public set
         //+
+        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
         /// <summary>
         ///     Вернуть и установить DiscountValue
         /// </summary>
@@ -76,9 +79,10 @@ namespace DiscountForms
             get => ValueBox.Text;
             private set => ValueBox.Text = value;
         }
-
+        //TODO: XML
         public void SetCheckPosition(Discounts type, double value, double price)
         {
+            //TODO: Почему объект кусками передаёте?
             DiscountValue = value.ToString();
             Price = price.ToString();
             DiscountsType = type;
@@ -96,9 +100,6 @@ namespace DiscountForms
             {
                 TextBoxCheck(textBox, e);
             }
-
-            //TODO: Ниже дубль - можно всё привязать к одному обработчику.
-            //+
         }
 
         ///// <summary>

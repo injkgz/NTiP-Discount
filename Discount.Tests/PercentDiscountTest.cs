@@ -6,8 +6,10 @@ namespace Discount.Tests
     [TestFixture]
     public class PercentDiscountTest
     {
+        //TODO: Забыл раньше сказать - XML комментарии в тестах писать не нужно.
         //TODO: Тесты должны покрывать всю публичную часть класса!
         //покрывают
+        //TODO: Нет.
         /// <summary>
         ///     Позитивное тестирование метода Calculate
         /// </summary>

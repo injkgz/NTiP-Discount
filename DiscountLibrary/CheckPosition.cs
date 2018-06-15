@@ -26,16 +26,12 @@ namespace Discount
             Product = product;
         }
 
-        //TODO: Зачем публичный set?
-        //+
         /// <summary>
         ///     Скидка
         /// </summary>
         [DataMember]
         public DiscountBase DiscountBase { get; private set; }
 
-        //TODO: Зачем публичный set?
-        //+
         /// <summary>
         ///     Товар
         /// </summary>
@@ -65,6 +61,7 @@ namespace Discount
 
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
+                //TODO: "не инициализированЫ"
                 throw new ArgumentException("Discount " +
                                             "не инициализированы! Равны NULL!");
             }
@@ -89,6 +86,7 @@ namespace Discount
 
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
+                //TODO: "не инициализированЫ"
                 throw new ArgumentException("Discount " +
                                             "не инициализированы! Равны NULL!");
             }

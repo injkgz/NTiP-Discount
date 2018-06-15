@@ -144,8 +144,6 @@ namespace DiscountForms
             }
             catch (Exception exception)
             {
-                //TODO: Непонятное сообщение!!! Что такое "формат"? Тут скорее "содержание файла"
-                //+
                 MessageBox.Show("Неверное содержание файла! Попробуйте другой! \n"
                                 + exception.Message);
             }

@@ -37,8 +37,6 @@ namespace Discount.Tests
             Assert.That(() => product.Price = value, Throws.TypeOf<Exception>());
         }
 
-        //TODO: Тесты должны покрывать всю публичную часть класса!
-        //Покрывает
         /// <summary>
         ///     Положительный тест конструктора сущности Product
         /// </summary>
