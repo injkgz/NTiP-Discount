@@ -62,6 +62,7 @@ namespace Discount
                 {
                     return DiscountBase.Description;
                 }
+
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
                 throw new ArgumentException("Discount " +
@@ -85,6 +86,7 @@ namespace Discount
                 {
                     return DiscountBase.Value();
                 }
+
                 //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
                 //+
                 throw new ArgumentException("Discount " +

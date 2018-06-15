@@ -6,6 +6,40 @@ namespace Discount.Tests
     [TestFixture]
     public class СouponDiscountTest
     {
+        /// <summary>
+        ///     Тестирование метода Calculate
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="value"></param>
+        /// <param name="result"></param>
+        [Test]
+        [TestCase(1000, 10, 990, TestName = "Проверка " +
+                                            "присваивания рандомных значений №1")]
+        [TestCase(2000, 2020, 0, TestName = "Проверка " +
+                                            "присваивания рандомных значений №2")]
+        [TestCase(1000, 2020, 0, TestName = "Проверка " +
+                                            "присваивания рандомных значений №3")]
+        public void CouponCalculateTest(double price, double value, double result)
+        {
+            var discount = new CouponDiscount(value);
+            Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
+        }
+
+        /// <summary>
+        ///     Негативный тест метода Calculate
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="value"></param>
+        [Test]
+        [TestCase(-1, 2020, TestName = "Проверка " +
+                                       "присваивания отрицательных значений")]
+        public void CouponCalculateTestThrows(double price,
+            double value)
+        {
+            var discount = new CouponDiscount(value);
+            Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
+        }
+
         //TODO: Тесты должны покрывать всю публичную часть класса!
         /// <summary>
         ///     Положительное тестирование конструктора сущности CouponDiscount
@@ -36,40 +70,6 @@ namespace Discount.Tests
         public void CouponDiscountConstructorTestThrows(double value)
         {
             Assert.That(() => new CouponDiscount(value), Throws.TypeOf<ArgumentException>());
-        }
-
-        /// <summary>
-        ///     Тестирование метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
-        /// <param name="result"></param>
-        [Test]
-        [TestCase(1000, 10, 990, TestName = "Проверка " +
-                                            "присваивания рандомных значений №1")]
-        [TestCase(2000, 2020, 0, TestName = "Проверка " +
-                                            "присваивания рандомных значений №2")]
-        [TestCase(1000, 2020, 0, TestName = "Проверка " +
-                                          "присваивания рандомных значений №3")]
-        public void CouponCalculateTest(double price, double value, double result)
-        {
-            var discount = new CouponDiscount(value);
-            Assert.That(() => discount.Calculate(price), Is.EqualTo(result));
-        }
-
-        /// <summary>
-        ///     Негативный тест метода Calculate
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="value"></param>
-        [Test]
-        [TestCase(-1, 2020, TestName = "Проверка " +
-                                       "присваивания отрицательных значений")]
-        public void CouponCalculateTestThrows(double price,
-            double value)
-        {
-            var discount = new CouponDiscount(value);
-            Assert.That(() => discount.Calculate(price), Throws.TypeOf<ArgumentException>());
         }
 
 
@@ -103,8 +103,9 @@ namespace Discount.Tests
         {
             Assert.That(() => new CouponDiscount(value), Throws.TypeOf<ArgumentException>());
         }
+
         /// <summary>
-        ///    Тестирование свойства Description
+        ///     Тестирование свойства Description
         /// </summary>
         /// <param name="value"></param>
         [Test]
@@ -116,7 +117,7 @@ namespace Discount.Tests
         }
 
         /// <summary>
-        ///    Тестирование свойства Value
+        ///     Тестирование свойства Value
         /// </summary>
         /// <param name="value"></param>
         [Test]

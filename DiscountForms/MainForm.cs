@@ -74,12 +74,12 @@ namespace DiscountForms
         private void ButtonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
-            var type = (Discounts)random.Next(-1, 2);
+            var type = (Discounts) random.Next(-1, 2);
             double price = 0;
             double discountValue = 0;
             while (price == 0)
             {
-                type = (Discounts)random.Next(-1, 2);
+                type = (Discounts) random.Next(-1, 2);
                 switch (type)
                 {
                     case Discounts.Percent:
@@ -96,7 +96,7 @@ namespace DiscountForms
                     }
                 }
             }
-            
+
 
             _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
                     (type, discountValue),

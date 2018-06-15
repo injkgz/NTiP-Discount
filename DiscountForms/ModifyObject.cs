@@ -1,31 +1,23 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Discount;
 using static DiscountForms.FormTools;
 
 namespace DiscountForms
 {
     /// <summary>
-    /// Контрол ModifyObject
+    ///     Контрол ModifyObject
     /// </summary>
     public partial class ModifyObject : UserControl
     {
         /// <summary>
-        /// Инициализация ModifyObject
+        ///     Инициализация ModifyObject
         /// </summary>
         public ModifyObject()
         {
             InitializeComponent();
         }
 
-        public void SetCheckPosition(Discounts type, double value, double price)
-        {
-            DiscountValue = value.ToString();
-            Price = price.ToString();
-            DiscountsType = type;
-
-        }
         /// <summary>
         ///     Заблокировать запись в поля
         /// </summary>
@@ -40,7 +32,7 @@ namespace DiscountForms
         }
 
         //TODO: Не нужно на public
-        //
+        //+
         /// <summary>
         ///     Вернуть и установить цену
         /// </summary>
@@ -51,13 +43,14 @@ namespace DiscountForms
         }
 
         //TODO: Не нужно на public set
+        //+
         /// <summary>
         ///     Вернуть и установить тип скидки
         /// </summary>
         public Discounts DiscountsType
         {
-            get => PercentRadioButton.Checked 
-                ? Discounts.Percent 
+            get => PercentRadioButton.Checked
+                ? Discounts.Percent
                 : Discounts.Coupon;
             private set
             {
@@ -74,6 +67,7 @@ namespace DiscountForms
         }
 
         //TODO: Не нужно на public set
+        //+
         /// <summary>
         ///     Вернуть и установить DiscountValue
         /// </summary>
@@ -83,6 +77,13 @@ namespace DiscountForms
             private set => ValueBox.Text = value;
         }
 
+        public void SetCheckPosition(Discounts type, double value, double price)
+        {
+            DiscountValue = value.ToString();
+            Price = price.ToString();
+            DiscountsType = type;
+        }
+
         /// <summary>
         ///     Обработчик события валидации DiscountValueBox
         /// </summary>
@@ -90,12 +91,14 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void TextBox_Validating(object sender, CancelEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
+            var textBox = sender as TextBox;
             if (textBox != null)
             {
                 TextBoxCheck(textBox, e);
             }
+
             //TODO: Ниже дубль - можно всё привязать к одному обработчику.
+            //+
         }
 
         ///// <summary>
