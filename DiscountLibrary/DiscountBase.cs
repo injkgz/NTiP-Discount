@@ -18,7 +18,7 @@ namespace Discount
         ///     Метод, возвращающий string-описание скидки
         /// </summary>
         /// <returns></returns>
-        public abstract string Description { get; set; }
+        public abstract string Description { get; protected set; }
 
         /// <summary>
         ///     Расчёт итоговой цены товара

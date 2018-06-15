@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Discount;
 using static DiscountForms.FormTools;
 
 namespace DiscountForms
@@ -18,6 +19,13 @@ namespace DiscountForms
             InitializeComponent();
         }
 
+        public void SetCheckPosition(Discounts type, double value, double price)
+        {
+            DiscountValue = value.ToString();
+            Price = price.ToString();
+            DiscountsType = type;
+
+        }
         /// <summary>
         ///     Заблокировать запись в поля
         /// </summary>
@@ -32,13 +40,14 @@ namespace DiscountForms
         }
 
         //TODO: Не нужно на public
+        //
         /// <summary>
         ///     Вернуть и установить цену
         /// </summary>
         public string Price
         {
             get => PriceBox.Text;
-            set => PriceBox.Text = value;
+            private set => PriceBox.Text = value;
         }
 
         //TODO: Не нужно на public set
@@ -50,7 +59,7 @@ namespace DiscountForms
             get => PercentRadioButton.Checked 
                 ? Discounts.Percent 
                 : Discounts.Coupon;
-            set
+            private set
             {
                 switch (value)
                 {
@@ -71,7 +80,7 @@ namespace DiscountForms
         public string DiscountValue
         {
             get => ValueBox.Text;
-            set => ValueBox.Text = value;
+            private set => ValueBox.Text = value;
         }
 
         /// <summary>
@@ -79,20 +88,14 @@ namespace DiscountForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ValueBox_Validating(object sender, CancelEventArgs e)
+        private void TextBox_Validating(object sender, CancelEventArgs e)
         {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                TextBoxCheck(textBox, e);
+            }
             //TODO: Ниже дубль - можно всё привязать к одному обработчику.
-            TextBoxCheck(ValueBox, e);
-        }
-
-        /// <summary>
-        ///     Обработчик события валидации PriceBox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PriceBox_Validating(object sender, CancelEventArgs e)
-        {
-            TextBoxCheck(PriceBox, e);
         }
 
         ///// <summary>

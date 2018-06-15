@@ -211,12 +211,9 @@
             // 
             // ShowObject
             // 
-            this.ShowObject.DiscountsType = DiscountForms.Discounts.Coupon;
-            this.ShowObject.DiscountValue = "";
             this.ShowObject.Location = new System.Drawing.Point(617, 144);
             this.ShowObject.Name = "ShowObject";
-            this.ShowObject.Price = "";
-            this.ShowObject.Size = new System.Drawing.Size(124, 205);
+            this.ShowObject.Size = new System.Drawing.Size(132, 205);
             this.ShowObject.TabIndex = 8;
             // 
             // MainForm

@@ -44,12 +44,9 @@
             // 
             // ObjectControl
             // 
-            this.ObjectControl.DiscountsType = DiscountForms.Discounts.Coupon;
-            this.ObjectControl.DiscountValue = "";
-            this.ObjectControl.Location = new System.Drawing.Point(4, 9);
+            this.ObjectControl.Location = new System.Drawing.Point(5, 9);
             this.ObjectControl.Name = "ObjectControl";
-            this.ObjectControl.Price = "";
-            this.ObjectControl.Size = new System.Drawing.Size(145, 205);
+            this.ObjectControl.Size = new System.Drawing.Size(139, 205);
             this.ObjectControl.TabIndex = 1;
             // 
             // AddDialogForm
@@ -72,8 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonAdd;
-        private ModifyObject AddControl;
-        private ModifyObject ControlObject;
         private ModifyObject ObjectControl;
     }
 }

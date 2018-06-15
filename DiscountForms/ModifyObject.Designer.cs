@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.AddGroupBox = new System.Windows.Forms.GroupBox();
+            this.ValueBox = new System.Windows.Forms.TextBox();
+            this.PriceBox = new System.Windows.Forms.TextBox();
             this.DiscountBox = new System.Windows.Forms.GroupBox();
             this.PercentRadioButton = new System.Windows.Forms.RadioButton();
             this.CouponRadioButton = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.PriceBox = new System.Windows.Forms.TextBox();
-            this.ValueBox = new System.Windows.Forms.TextBox();
             this.AddGroupBox.SuspendLayout();
             this.DiscountBox.SuspendLayout();
             this.SuspendLayout();
@@ -49,10 +49,27 @@
             this.AddGroupBox.Controls.Add(this.label1);
             this.AddGroupBox.Location = new System.Drawing.Point(3, 3);
             this.AddGroupBox.Name = "AddGroupBox";
-            this.AddGroupBox.Size = new System.Drawing.Size(142, 202);
+            this.AddGroupBox.Size = new System.Drawing.Size(136, 202);
             this.AddGroupBox.TabIndex = 0;
             this.AddGroupBox.TabStop = false;
             this.AddGroupBox.Text = "Объект CheckPosition";
+            // 
+            // ValueBox
+            // 
+            this.ValueBox.Location = new System.Drawing.Point(7, 166);
+            this.ValueBox.Name = "ValueBox";
+            this.ValueBox.Size = new System.Drawing.Size(100, 20);
+            this.ValueBox.TabIndex = 17;
+            this.ValueBox.TextChanged += new System.EventHandler(this.ValueBox_TextChanged);
+            this.ValueBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
+            // 
+            // PriceBox
+            // 
+            this.PriceBox.Location = new System.Drawing.Point(7, 43);
+            this.PriceBox.Name = "PriceBox";
+            this.PriceBox.Size = new System.Drawing.Size(100, 20);
+            this.PriceBox.TabIndex = 16;
+            this.PriceBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // DiscountBox
             // 
@@ -65,7 +82,7 @@
             this.DiscountBox.TabStop = false;
             this.DiscountBox.Text = "Тип скидки";
             // 
-            // percentRadioButton
+            // PercentRadioButton
             // 
             this.PercentRadioButton.AutoSize = true;
             this.PercentRadioButton.Location = new System.Drawing.Point(6, 19);
@@ -76,7 +93,7 @@
             this.PercentRadioButton.Text = "По процентам";
             this.PercentRadioButton.UseVisualStyleBackColor = true;
             // 
-            // couponRadioButton
+            // CouponRadioButton
             // 
             this.CouponRadioButton.AutoSize = true;
             this.CouponRadioButton.Location = new System.Drawing.Point(6, 42);
@@ -105,30 +122,13 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Цена товара:";
             // 
-            // PriceBox
-            // 
-            this.PriceBox.Location = new System.Drawing.Point(7, 43);
-            this.PriceBox.Name = "PriceBox";
-            this.PriceBox.Size = new System.Drawing.Size(100, 20);
-            this.PriceBox.TabIndex = 16;
-            this.PriceBox.Validating += new System.ComponentModel.CancelEventHandler(this.PriceBox_Validating);
-            // 
-            // ValueBox
-            // 
-            this.ValueBox.Location = new System.Drawing.Point(7, 166);
-            this.ValueBox.Name = "ValueBox";
-            this.ValueBox.Size = new System.Drawing.Size(100, 20);
-            this.ValueBox.TabIndex = 17;
-            this.ValueBox.TextChanged += new System.EventHandler(this.ValueBox_TextChanged);
-            this.ValueBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValueBox_Validating);
-            // 
             // ModifyObject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.AddGroupBox);
             this.Name = "ModifyObject";
-            this.Size = new System.Drawing.Size(145, 205);
+            this.Size = new System.Drawing.Size(139, 205);
             this.AddGroupBox.ResumeLayout(false);
             this.AddGroupBox.PerformLayout();
             this.DiscountBox.ResumeLayout(false);

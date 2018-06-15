@@ -31,8 +31,7 @@ namespace DiscountForms
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             if (ObjectControl.DiscountValue != "" 
-                && ObjectControl.Price != ""
-                && ObjectControl.DiscountsType != null)
+                && ObjectControl.Price != "")
             {
                 DialogResult = DialogResult.OK;
             }

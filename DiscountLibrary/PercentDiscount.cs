@@ -44,6 +44,8 @@ namespace Discount
         }
 
         //TODO: Зачем публичный set?
+        //+
+        //Контрол будет отрабатывать неверно
         /// <summary>
         ///     Метод, возвращающий string-описание скидки
         /// </summary>
@@ -52,7 +54,7 @@ namespace Discount
         public override string Description
         {
             get => "Скидка по процентам";
-            set => _description = value;
+            protected set => _description = value;
         }
 
         /// <summary>

@@ -55,6 +55,12 @@ namespace DiscountForms
         {
             if (productTable.CurrentRow != null)
             {
+                if (ShowObject.Price ==
+                    _checkList[productTable.CurrentRow.Index].CheckPositionPrice.ToString())
+                {
+                    ShowObject.Visible = false;
+                }
+
                 var index = productTable.CurrentRow.Index;
                 productTable.Rows.Remove(productTable.Rows[index]);
             }
@@ -68,17 +74,33 @@ namespace DiscountForms
         private void ButtonAddRandom_Click(object sender, EventArgs e)
         {
             var random = new Random();
-            double price = random.Next(100, 1000);
-            double discountValue = random.Next(50, 700);
-            _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
-                    (Discounts.Coupon, discountValue),
-                new Product(price)));
+            var type = (Discounts)random.Next(-1, 2);
+            double price = 0;
+            double discountValue = 0;
+            while (price == 0)
+            {
+                type = (Discounts)random.Next(-1, 2);
+                switch (type)
+                {
+                    case Discounts.Percent:
+                    {
+                        price = random.Next(100, 1000);
+                        discountValue = random.Next(1, 98);
+                        break;
+                    }
+                    case Discounts.Coupon:
+                    {
+                        price = random.Next(100, 1000);
+                        discountValue = random.Next(50, 980);
+                        break;
+                    }
+                }
+            }
+            
 
-            double secondPrice = random.Next(100, 1000);
-            double Value = random.Next(1, 90);
             _checkList.Add(new CheckPosition(DiscountFactory.GetDiscount
-                    (Discounts.Percent, Value),
-                new Product(secondPrice)));
+                    (type, discountValue),
+                new Product(price)));
         }
 
         /// <summary>
@@ -115,7 +137,8 @@ namespace DiscountForms
             catch (Exception exception)
             {
                 //TODO: Непонятное сообщение!!! Что такое "формат"? Тут скорее "содержание файла"
-                MessageBox.Show("Неверный формат файла! Попробуйте другой! \n"
+                //+
+                MessageBox.Show("Неверное содержание файла! Попробуйте другой! \n"
                                 + exception.Message);
             }
         }
@@ -178,20 +201,23 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ProductTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var currentCheck = _checkList[productTable.CurrentRow.Index];
-            switch (currentCheck.DiscountType)
+            if (_checkList[productTable.CurrentRow.Index] != null)
             {
-                case "Скидка по процентам":
-                    ShowObject.DiscountsType = Discounts.Percent;
-                    break;
-                case "Скидка по купону":
-                    ShowObject.DiscountsType = Discounts.Coupon;
-                    break;
-            }
+                var currentCheck = _checkList[productTable.CurrentRow.Index];
+                switch (currentCheck.DiscountType)
+                {
+                    case "Скидка по процентам":
+                        ShowObject.SetCheckPosition(Discounts.Percent,
+                            currentCheck.DiscountValue, currentCheck.CheckPositionPrice);
+                        break;
+                    case "Скидка по купону":
+                        ShowObject.SetCheckPosition(Discounts.Coupon,
+                            currentCheck.DiscountValue, currentCheck.CheckPositionPrice);
+                        break;
+                }
 
-            ShowObject.DiscountValue = currentCheck.DiscountValue.ToString();
-            ShowObject.Price = currentCheck.CheckPositionPrice.ToString();
-            ShowObject.Visible = true;
+                ShowObject.Visible = true;
+            }
         }
     }
 }
