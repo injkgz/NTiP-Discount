@@ -7,6 +7,7 @@ namespace Discount.Tests
     public class PercentDiscountTest
     {
         //TODO: Тесты должны покрывать всю публичную часть класса!
+        //покрывают
         /// <summary>
         ///     Позитивное тестирование метода Calculate
         /// </summary>

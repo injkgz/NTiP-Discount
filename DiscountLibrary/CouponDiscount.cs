@@ -77,7 +77,6 @@ namespace Discount
             CheckPrice(price);
             if (CouponValue > price)
             {
-                CouponValue = CouponValue - price;
                 return 0;
             }
 

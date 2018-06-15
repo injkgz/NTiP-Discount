@@ -48,7 +48,7 @@ namespace Discount
         public double CheckPositionPrice
         {
             get => Product.Price;
-            set => Product.Price = value;
+            private set => Product.Price = value;
         }
 
         /// <summary>

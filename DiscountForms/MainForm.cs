@@ -110,11 +110,19 @@ namespace DiscountForms
         /// <param name="e">Аргументы события</param>
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Filter = Resources.FileExtention;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                Save(saveFileDialog.FileName, _checkList);
+                saveFileDialog.Filter = Resources.FileExtention;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Save(saveFileDialog.FileName, _checkList);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Файл занят другим процессом! \n"
+                                + exception.Message);
             }
         }
 

@@ -7,6 +7,7 @@ namespace Discount.Tests
     public class CheckPositionTest
     {
         //TODO: Тесты должны покрывать всю публичную часть класса!
+        //покрывает, в CheckPosition больше нет public setter-ов.
         /// <summary>
         ///     Негативное тестирование конструктора CheckPosition
         /// </summary>
