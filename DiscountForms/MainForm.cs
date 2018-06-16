@@ -55,9 +55,7 @@ namespace DiscountForms
         {
             if (productTable.CurrentRow != null)
             {
-                //TODO: Программу не тестировали. Падает при удалении элемента.
-                //+
-                if (ShowObject.Visible == true)
+                if (ShowObject.Visible)
                 {
                     if (ShowObject.CheckPosition.CheckPositionPrice ==
                         _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
