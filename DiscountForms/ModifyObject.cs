@@ -51,11 +51,10 @@ namespace DiscountForms
                 }
                 else
                 {
-                    //TODO: Программа падает, т.к. не задан выбранный радиобатон по умолчанию
-                    throw new ArgumentNullException("Не выбран необходимый тип скидки!");
+                    throw new ArgumentException("Не выбран необходимый тип скидки!");
                 }
 
-                if (PriceBox.Text != "" && ValueBox.Text != "")
+                if (PriceBox.Text != string.Empty && ValueBox.Text != string.Empty)
                 {
                     return new CheckPosition(DiscountFactory.GetDiscount(discountType,
                         Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));

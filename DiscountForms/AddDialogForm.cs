@@ -27,6 +27,7 @@ namespace DiscountForms
                 {
                     checkPosition = ObjectControl.CheckPosition;
                 }
+                //TODO: Тип исключения должен быть наиболее конкретным!
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
