@@ -1,5 +1,4 @@
 ﻿using System;
-using DiscountForms;
 using NUnit.Framework;
 
 namespace Discount.Tests

@@ -1,4 +1,4 @@
-﻿namespace DiscountForms
+﻿namespace Discount
 {
     /// <summary>
     ///     Типы скидок
