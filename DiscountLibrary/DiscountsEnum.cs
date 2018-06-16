@@ -1,5 +1,4 @@
-﻿//TODO: Не правильное именование namespace
-namespace DiscountForms
+﻿namespace Discount
 {
     /// <summary>
     ///     Типы скидок
