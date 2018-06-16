@@ -56,12 +56,16 @@ namespace DiscountForms
             if (productTable.CurrentRow != null)
             {
                 //TODO: Программу не тестировали. Падает при удалении элемента.
-                if (ShowObject.CheckPosition.CheckPositionPrice ==
-                    _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
+                //+
+                if (ShowObject.Visible == true)
                 {
-                    ShowObject.Visible = false;
-                }
+                    if (ShowObject.CheckPosition.CheckPositionPrice ==
+                        _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
+                    {
+                        ShowObject.Visible = false;
+                    }
 
+                }
                 var index = productTable.CurrentRow.Index;
                 productTable.Rows.Remove(productTable.Rows[index]);
             }

@@ -45,8 +45,14 @@ namespace DiscountForms
                         Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
                 }
                 //TODO: Тут правильнее завернуть в if с проверкой другого радиобатона, т.к. это потенциальное место расширения функциональности
-                return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
-                    Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+                //+
+                if (CouponRadioButton.Checked)
+                {
+                    return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
+                        Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+                }
+
+                return null;
             }
             set
             {
