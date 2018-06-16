@@ -62,8 +62,8 @@ namespace DiscountForms
                     {
                         ShowObject.Visible = false;
                     }
-
                 }
+
                 var index = productTable.CurrentRow.Index;
                 productTable.Rows.Remove(productTable.Rows[index]);
             }
