@@ -57,15 +57,15 @@ namespace DiscountForms
             {
                 //TODO: Программу не тестировали. Падает при удалении элемента.
                 //+
-                if (ShowObject.Visible == true)
+                if (ShowObject.Visible)
                 {
                     if (ShowObject.CheckPosition.CheckPositionPrice ==
                         _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
                     {
                         ShowObject.Visible = false;
                     }
-
                 }
+
                 var index = productTable.CurrentRow.Index;
                 productTable.Rows.Remove(productTable.Rows[index]);
             }

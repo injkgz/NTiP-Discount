@@ -44,6 +44,7 @@ namespace DiscountForms
                     return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
                         Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
                 }
+
                 //TODO: Тут правильнее завернуть в if с проверкой другого радиобатона, т.к. это потенциальное место расширения функциональности
                 //+
                 if (CouponRadioButton.Checked)
