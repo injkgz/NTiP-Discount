@@ -60,7 +60,7 @@
             this.ValueBox.Name = "ValueBox";
             this.ValueBox.Size = new System.Drawing.Size(100, 20);
             this.ValueBox.TabIndex = 17;
-            this.ValueBox.TextChanged += new System.EventHandler(this.ValueBox_TextChanged);
+            this.ValueBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.ValueBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // PriceBox
@@ -69,6 +69,7 @@
             this.PriceBox.Name = "PriceBox";
             this.PriceBox.Size = new System.Drawing.Size(100, 20);
             this.PriceBox.TabIndex = 16;
+            this.PriceBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.PriceBox.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox_Validating);
             // 
             // DiscountBox

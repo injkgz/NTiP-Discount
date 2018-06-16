@@ -17,7 +17,7 @@ namespace DiscountForms
         public ModifyObject()
         {
             InitializeComponent();
-            PercentRadioButton.Checked = true;
+            CouponRadioButton.Checked = true;
         }
 
         /// <summary>
@@ -92,25 +92,32 @@ namespace DiscountForms
         }
 
         ///// <summary>
-        /////     Обработчик события изменения текста в DiscountValueBox
+        /////     Обработчик события изменения текста в TextBox
         ///// </summary>
         ///// <param name="sender"></param>
         ///// <param name="e"></param>
-        private void ValueBox_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if (PercentRadioButton.Checked)
+            if (sender is TextBox textBox)
             {
                 try
                 {
-                    if (Convert.ToDouble(ValueBox.Text) > 100)
-                    {
-                        ValueBox.Text = "100";
-                    }
+                    Convert.ToDouble(textBox.Text);
                 }
                 catch (FormatException exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    MessageBox.Show("Вы вводите некорректные символы!\n" + exception.Message);
                 }
+            }
+
+            if (!PercentRadioButton.Checked)
+            {
+                return;
+            }
+
+            if (Convert.ToDouble(ValueBox.Text) > 100)
+            {
+                ValueBox.Text = "100";
             }
         }
     }

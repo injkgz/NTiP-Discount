@@ -48,6 +48,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ModifyButton = new System.Windows.Forms.Button();
             this.ShowObject = new DiscountForms.ModifyObject();
             ((System.ComponentModel.ISupportInitialize)(this.productTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkPositionBindingSource)).BeginInit();
@@ -82,7 +83,7 @@
             this.checkPositionPriceDataGridViewTextBoxColumn.HeaderText = "Цена товара";
             this.checkPositionPriceDataGridViewTextBoxColumn.Name = "checkPositionPriceDataGridViewTextBoxColumn";
             this.checkPositionPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.checkPositionPriceDataGridViewTextBoxColumn.Width = 88;
+            this.checkPositionPriceDataGridViewTextBoxColumn.Width = 96;
             // 
             // discountTypeDataGridViewTextBoxColumn
             // 
@@ -91,7 +92,7 @@
             this.discountTypeDataGridViewTextBoxColumn.HeaderText = "Тип скидки";
             this.discountTypeDataGridViewTextBoxColumn.Name = "discountTypeDataGridViewTextBoxColumn";
             this.discountTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.discountTypeDataGridViewTextBoxColumn.Width = 83;
+            this.discountTypeDataGridViewTextBoxColumn.Width = 90;
             // 
             // discountValueDataGridViewTextBoxColumn
             // 
@@ -117,21 +118,21 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(620, 355);
+            this.buttonAdd.Location = new System.Drawing.Point(620, 386);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(116, 43);
+            this.buttonAdd.Size = new System.Drawing.Size(113, 30);
             this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "Добавить позицию в чеке";
+            this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.ButtonAddProduct_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(621, 404);
+            this.deleteButton.Location = new System.Drawing.Point(621, 422);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(115, 47);
+            this.deleteButton.Size = new System.Drawing.Size(112, 29);
             this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Удалить позицию в чеке";
+            this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -180,7 +181,7 @@
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(617, 88);
+            this.searchBox.Location = new System.Drawing.Point(617, 84);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(116, 20);
             this.searchBox.TabIndex = 5;
@@ -190,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(617, 72);
+            this.label1.Location = new System.Drawing.Point(617, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 13);
             this.label1.TabIndex = 6;
@@ -198,7 +199,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(617, 115);
+            this.searchButton.Location = new System.Drawing.Point(617, 110);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(116, 23);
             this.searchButton.TabIndex = 7;
@@ -210,9 +211,19 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // ModifyButton
+            // 
+            this.ModifyButton.Location = new System.Drawing.Point(620, 350);
+            this.ModifyButton.Name = "ModifyButton";
+            this.ModifyButton.Size = new System.Drawing.Size(112, 30);
+            this.ModifyButton.TabIndex = 9;
+            this.ModifyButton.Text = "Изменить";
+            this.ModifyButton.UseVisualStyleBackColor = true;
+            this.ModifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
+            // 
             // ShowObject
             // 
-            this.ShowObject.Location = new System.Drawing.Point(617, 144);
+            this.ShowObject.Location = new System.Drawing.Point(617, 139);
             this.ShowObject.Name = "ShowObject";
             this.ShowObject.Size = new System.Drawing.Size(132, 205);
             this.ShowObject.TabIndex = 8;
@@ -222,6 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 461);
+            this.Controls.Add(this.ModifyButton);
             this.Controls.Add(this.ShowObject);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label1);
@@ -268,6 +280,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private ModifyObject ShowObject;
+        private System.Windows.Forms.Button ModifyButton;
     }
 }
 

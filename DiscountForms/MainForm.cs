@@ -217,6 +217,11 @@ namespace DiscountForms
             }
         }
 
+        /// <summary>
+        ///     Обработчик события Selection Changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productTable_SelectionChanged(object sender, EventArgs e)
         {
             if (productTable.CurrentRow != null)
@@ -228,6 +233,30 @@ namespace DiscountForms
             {
                 ShowObject.Visible = false;
             }
+        }
+
+        private void ModifyButton_Click(object sender, EventArgs e)
+        {
+            if (productTable.CurrentRow != null)
+            {
+                try
+                {
+                    var form = new AddDialogForm();
+                    form.Object = _checkList[productTable.CurrentRow.Index];
+                    form.ShowDialog();
+
+                    if (form.DialogResult == DialogResult.OK)
+                    {
+                        _checkList[productTable.CurrentRow.Index] = form.Object;
+                    }
+                }
+                catch (ArgumentException exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
+            ShowObject.Visible = true;
         }
     }
 }

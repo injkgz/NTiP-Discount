@@ -38,7 +38,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(145, 40);
             this.buttonAdd.TabIndex = 0;
-            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.Text = "ОК!";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
@@ -60,7 +60,7 @@
             this.Name = "AddDialogForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Добавление товара";
+            this.Text = "Объект CheckPrice";
             this.ResumeLayout(false);
 
         }

@@ -16,7 +16,7 @@ namespace DiscountForms
         }
 
         /// <summary>
-        ///     Вернуть сущность CheckPosition
+        ///     Вернуть и установить сущность CheckPosition
         /// </summary>
         public CheckPosition Object
         {
@@ -28,12 +28,24 @@ namespace DiscountForms
                     checkPosition = ObjectControl.CheckPosition;
                 }
                 //TODO: Тип исключения должен быть наиболее конкретным!
-                catch (Exception e)
+                //+
+                catch (ArgumentException e)
                 {
                     MessageBox.Show(e.Message);
                 }
 
                 return checkPosition;
+            }
+            set
+            {
+                try
+                {
+                    ObjectControl.CheckPosition = value;
+                }
+                catch (ArgumentException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
         }
 
