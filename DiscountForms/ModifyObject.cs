@@ -50,27 +50,12 @@ namespace DiscountForms
                 }
                 else
                 {
+                    //TODO: Программа падает, т.к. не задан выбранный радиобатон по умолчанию
                     throw new ArgumentNullException("Не выбран необходимый тип скидки!");
                 }
 
                 return new CheckPosition(DiscountFactory.GetDiscount(discountType,
                     Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
-
-                //TODO: Дублируется код, можно подсократить. В комментах оставлю предыдущую версию.
-                //хорошо, понял!
-                //if (PercentRadioButton.Checked)
-                //{
-                //    return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
-                //        Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
-                //}
-                //if (CouponRadioButton.Checked)
-                //{
-                //    return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
-                //        Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
-                //}
-                //
-                ////TODO: Должен был свалиться с испключением, а не кидать null (поправил в новой версии)
-                //return null;
             }
             set
             {
