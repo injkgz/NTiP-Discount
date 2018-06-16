@@ -73,6 +73,7 @@
             this.productTable.Size = new System.Drawing.Size(599, 423);
             this.productTable.TabIndex = 0;
             this.productTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductTable_CellClick);
+            this.productTable.SelectionChanged += new System.EventHandler(this.productTable_SelectionChanged);
             // 
             // checkPositionPriceDataGridViewTextBoxColumn
             // 

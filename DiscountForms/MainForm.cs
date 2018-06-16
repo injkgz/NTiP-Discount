@@ -216,5 +216,18 @@ namespace DiscountForms
                 ShowObject.Visible = true;
             }
         }
+
+        private void productTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (productTable.CurrentRow != null)
+            {
+                ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
+                ShowObject.Visible = true;
+            }
+            else
+            {
+                ShowObject.Visible = false;
+            }
+        }
     }
 }

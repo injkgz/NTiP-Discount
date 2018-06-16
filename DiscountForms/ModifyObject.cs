@@ -43,19 +43,21 @@ namespace DiscountForms
                 if (PercentRadioButton.Checked)
                 {
                     discountType = Discounts.Percent;
-                } else if (CouponRadioButton.Checked)
+                }
+                else if (CouponRadioButton.Checked)
                 {
                     discountType = Discounts.Coupon;
                 }
                 else
                 {
-                    throw  new ArgumentNullException("Не выбран необходимый тип исключения!");
+                    throw new ArgumentNullException("Не выбран необходимый тип скидки!");
                 }
 
                 return new CheckPosition(DiscountFactory.GetDiscount(discountType,
                     Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
-                
+
                 //TODO: Дублируется код, можно подсократить. В комментах оставлю предыдущую версию.
+                //хорошо, понял!
                 //if (PercentRadioButton.Checked)
                 //{
                 //    return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
