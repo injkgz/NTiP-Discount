@@ -6,6 +6,7 @@ namespace Discount.Tests
     [TestFixture]
     public class ProductTest
     {
+        //TODO: XML убрать
         /// <summary>
         ///     Положительный тест конструктора сущности Product
         /// </summary>

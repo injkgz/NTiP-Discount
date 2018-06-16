@@ -7,10 +7,7 @@ namespace Discount.Tests
     [TestFixture]
     public class CheckPositionTest
     {
-        //TODO: Тесты должны покрывать всю публичную часть класса!
-        //покрывает, в CheckPosition больше нет public setter-ов.
-        //TODO: И, а остальную функцоинальность класса кто будет покрывать? Нормальная работа get тоже должна гарантироваться!
-        //+
+        //TODO: XML убрать
         /// <summary>
         ///     Негативное тестирование конструктора CheckPosition
         /// </summary>

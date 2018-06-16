@@ -55,6 +55,7 @@ namespace DiscountForms
         {
             if (productTable.CurrentRow != null)
             {
+                //TODO: Программу не тестировали. Падает при удалении элемента.
                 if (ShowObject.GetCheckPosition().CheckPositionPrice ==
                     _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
                 {
@@ -210,6 +211,7 @@ namespace DiscountForms
             if (_checkList[productTable.CurrentRow.Index] != null)
             {
                 var currentCheck = _checkList[productTable.CurrentRow.Index];
+                //TODO: Почему сразу не передать текущий чек в форму?
                 switch (currentCheck.DiscountType)
                 {
                     case "Скидка по процентам":

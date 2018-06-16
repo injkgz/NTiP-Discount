@@ -32,32 +32,16 @@ namespace DiscountForms
             }
         }
 
-        //TODO: Не нужно на public
-        //+
-        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        //+
-
-        //TODO: Не нужно на public set
-        //+
-        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        //+
-
-        //TODO: Не нужно на public set
-        //+
-        //TODO: ВООБЩЕ не нужно на public и скорее всего не нужно классу!
-        //+
-        //TODO: XML
-        //+
+        //TODO: CheckPosition должен быть свойством.
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
+        /// TODO: XML не совпадает с параметрами
         /// <param name="type"></param>
         /// <param name="value"></param>
         /// <param name="price"></param>
         public CheckPosition GetCheckPosition()
         {
-            //TODO: Почему объект кусками передаёте?
-            //+
             if (PercentRadioButton.Checked)
             {
                 return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,

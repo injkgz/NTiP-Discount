@@ -59,10 +59,6 @@ namespace Discount
                     return DiscountBase.Description;
                 }
 
-                //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
-                //+
-                //TODO: "не инициализированЫ"
-                //+
                 throw new ArgumentException("Discount " +
                                             "не инициализирован! Равен NULL!");
             }
@@ -85,10 +81,6 @@ namespace Discount
                     return DiscountBase.Value();
                 }
 
-                //TODO: Копипаста, сообщение должно говорить только о Discount, т.к. проверяет только Discount
-                //+
-                //TODO: "не инициализированЫ"
-                //+
                 throw new ArgumentException("Discount " +
                                             "не инициализирован! Равен NULL!");
             }

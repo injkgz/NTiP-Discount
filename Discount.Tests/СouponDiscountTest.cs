@@ -6,7 +6,6 @@ namespace Discount.Tests
     [TestFixture]
     public class СouponDiscountTest
     {
-        //TODO: Забыл раньше сказать - XML комментарии в тестах писать не нужно.
         [Test]
         [TestCase(1000, 10, 990, TestName = "Проверка " +
                                             "присваивания рандомных значений №1")]
