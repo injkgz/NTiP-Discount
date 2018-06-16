@@ -55,8 +55,13 @@ namespace DiscountForms
                     throw new ArgumentNullException("Не выбран необходимый тип скидки!");
                 }
 
-                return new CheckPosition(DiscountFactory.GetDiscount(discountType,
-                    Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+                if (PriceBox.Text != "" && ValueBox.Text != "")
+                {
+                    return new CheckPosition(DiscountFactory.GetDiscount(discountType,
+                        Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+                }
+
+                throw new ArgumentException("Заполните все поля!");
             }
             set
             {

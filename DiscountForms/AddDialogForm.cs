@@ -18,7 +18,23 @@ namespace DiscountForms
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
-        public CheckPosition Object => ObjectControl.CheckPosition;
+        public CheckPosition Object
+        {
+            get
+            {
+                CheckPosition checkPosition = null;
+                try
+                {
+                    checkPosition = ObjectControl.CheckPosition;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+
+                return checkPosition;
+            }
+        }
 
         /// <summary>
         ///     Обработчик события нажатия на кнопку Добавить
@@ -27,7 +43,10 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            if (Object != null)
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }
