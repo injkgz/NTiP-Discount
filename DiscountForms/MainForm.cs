@@ -56,7 +56,7 @@ namespace DiscountForms
             if (productTable.CurrentRow != null)
             {
                 //TODO: Программу не тестировали. Падает при удалении элемента.
-                if (ShowObject.GetCheckPosition().CheckPositionPrice ==
+                if (ShowObject.CheckPosition.CheckPositionPrice ==
                     _checkList[productTable.CurrentRow.Index].CheckPositionPrice)
                 {
                     ShowObject.Visible = false;
@@ -212,7 +212,7 @@ namespace DiscountForms
             {
                 //TODO: Почему сразу не передать текущий чек в форму?
                 //а я об этом и не подумал о_О
-                ShowObject.SetCheckPosition(_checkList[productTable.CurrentRow.Index]);
+                ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
                 ShowObject.Visible = true;
             }
         }

@@ -7,11 +7,6 @@ namespace Discount.Tests
     public class CheckPositionTest
     {
         //TODO: XML убрать
-        /// <summary>
-        ///     Негативное тестирование конструктора CheckPosition
-        /// </summary>
-        /// <param name="discount"></param>
-        /// <param name="product"></param>
         [Test]
         [TestCase(null, null, TestName = "Проверка передачи null значений")]
         public void CheckPositionConstructorTest(DiscountBase discount, Product product)

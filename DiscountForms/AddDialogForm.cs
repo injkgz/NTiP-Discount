@@ -18,7 +18,7 @@ namespace DiscountForms
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
-        public CheckPosition Object => ObjectControl.GetCheckPosition();
+        public CheckPosition Object => ObjectControl.CheckPosition;
 
         /// <summary>
         ///     Обработчик события нажатия на кнопку Добавить
