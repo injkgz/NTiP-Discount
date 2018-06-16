@@ -95,7 +95,7 @@ namespace Discount.Tests
         }
 
         [Test]
-        [TestCase(100,ExpectedResult = 100,
+        [TestCase(100, ExpectedResult = 100,
             TestName = "Проверка корректного Get у DiscountValue")]
         public double DiscountValueTest(double value)
         {

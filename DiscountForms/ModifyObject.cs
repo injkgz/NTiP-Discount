@@ -51,9 +51,6 @@ namespace DiscountForms
         /// <summary>
         ///     Вернуть сущность CheckPosition
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        /// <param name="price"></param>
         public CheckPosition GetCheckPosition()
         {
             //TODO: Почему объект кусками передаёте?
@@ -68,12 +65,11 @@ namespace DiscountForms
                 Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
         }
 
+
         /// <summary>
         ///     Установить сущность CheckPosition
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        /// <param name="price"></param>
+        /// <param name="checkPosition"></param>
         public void SetCheckPosition(CheckPosition checkPosition)
         {
             ValueBox.Text = checkPosition.DiscountValue.ToString();
