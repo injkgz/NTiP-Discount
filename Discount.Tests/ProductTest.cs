@@ -7,11 +7,7 @@ namespace Discount.Tests
     public class ProductTest
     {
         //TODO: XML убрать
-        /// <summary>
-        ///     Положительный тест конструктора сущности Product
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        //+
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка " +
                                                     "присваивания минимального логического значения")]
@@ -25,10 +21,6 @@ namespace Discount.Tests
             return product.Price;
         }
 
-        /// <summary>
-        ///     Негативный тест конструктора сущности Product
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(0, TestName = "Проверка присваивания 0")]
         [TestCase(-1, TestName = "Проверка присваивания отрицательного значения")]
@@ -38,11 +30,6 @@ namespace Discount.Tests
             Assert.That(() => product.Price = value, Throws.TypeOf<Exception>());
         }
 
-        /// <summary>
-        ///     Положительный тест конструктора сущности Product
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка " +
                                                     "присваивания минимального логического значения")]
@@ -56,10 +43,6 @@ namespace Discount.Tests
             return product.Price;
         }
 
-        /// <summary>
-        ///     Негативный тест конструктора сущности Product
-        /// </summary>
-        /// <param name="value"></param>
         [Test]
         [TestCase(0, TestName = "Проверка присваивания 0")]
         [TestCase(-1, TestName = "Проверка присваивания отрицательного значения")]

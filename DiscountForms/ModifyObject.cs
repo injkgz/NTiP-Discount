@@ -33,42 +33,39 @@ namespace DiscountForms
         }
 
         //TODO: CheckPosition должен быть свойством.
+        //+
         /// <summary>
-        ///     Вернуть сущность CheckPosition
+        ///     Вернуть и установить сущность CheckPosition
         /// </summary>
         /// TODO: XML не совпадает с параметрами
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        /// <param name="price"></param>
-        public CheckPosition GetCheckPosition()
+        // неправильный мёрдж))
+
+        public CheckPosition CheckPosition
         {
-            if (PercentRadioButton.Checked)
+            get
             {
-                return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
+                if (PercentRadioButton.Checked)
+                {
+                    return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
+                        Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
+                }
+
+                return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
                     Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
             }
-
-            return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
-                Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
-        }
-
-
-        /// <summary>
-        ///     Установить сущность CheckPosition
-        /// </summary>
-        /// <param name="checkPosition"></param>
-        public void SetCheckPosition(CheckPosition checkPosition)
-        {
-            ValueBox.Text = checkPosition.DiscountValue.ToString();
-            PriceBox.Text = checkPosition.CheckPositionPrice.ToString();
-            switch (checkPosition.DiscountType)
+            set
             {
-                case "Скидка по процентам":
-                    PercentRadioButton.Checked = true;
-                    break;
-                case "Скидка по купону":
-                    CouponRadioButton.Checked = true;
-                    break;
+                ValueBox.Text = value.DiscountValue.ToString();
+                PriceBox.Text = value.CheckPositionPrice.ToString();
+                switch (value.DiscountType)
+                {
+                    case "Скидка по процентам":
+                        PercentRadioButton.Checked = true;
+                        break;
+                    case "Скидка по купону":
+                        CouponRadioButton.Checked = true;
+                        break;
+                }
             }
         }
 

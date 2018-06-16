@@ -210,20 +210,9 @@ namespace DiscountForms
         {
             if (_checkList[productTable.CurrentRow.Index] != null)
             {
-                var currentCheck = _checkList[productTable.CurrentRow.Index];
                 //TODO: Почему сразу не передать текущий чек в форму?
-                switch (currentCheck.DiscountType)
-                {
-                    case "Скидка по процентам":
-                        ShowObject.SetCheckPosition(new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
-                            currentCheck.DiscountValue), new Product(currentCheck.CheckPositionPrice)));
-                        break;
-                    case "Скидка по купону":
-                        ShowObject.SetCheckPosition(new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
-                            currentCheck.DiscountValue), new Product(currentCheck.CheckPositionPrice)));
-                        break;
-                }
-
+                //а я об этом и не подумал о_О
+                ShowObject.SetCheckPosition(_checkList[productTable.CurrentRow.Index]);
                 ShowObject.Visible = true;
             }
         }
