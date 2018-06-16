@@ -17,6 +17,7 @@ namespace DiscountForms
         public ModifyObject()
         {
             InitializeComponent();
+            PercentRadioButton.Checked = true;
         }
 
         /// <summary>
