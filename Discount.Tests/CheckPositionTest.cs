@@ -6,7 +6,6 @@ namespace Discount.Tests
     [TestFixture]
     public class CheckPositionTest
     {
-        //TODO: XML убрать
         [Test]
         [TestCase(null, null, TestName = "Проверка передачи null значений")]
         public void CheckPositionConstructorTest(DiscountBase discount, Product product)

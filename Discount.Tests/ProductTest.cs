@@ -6,8 +6,6 @@ namespace Discount.Tests
     [TestFixture]
     public class ProductTest
     {
-        //TODO: XML убрать
-        //+
         [Test]
         [TestCase(1, ExpectedResult = 1, TestName = "Проверка " +
                                                     "присваивания минимального логического значения")]

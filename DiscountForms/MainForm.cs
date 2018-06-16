@@ -210,8 +210,6 @@ namespace DiscountForms
         {
             if (_checkList[productTable.CurrentRow.Index] != null)
             {
-                //TODO: Почему сразу не передать текущий чек в форму?
-                //а я об этом и не подумал о_О
                 ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
                 ShowObject.Visible = true;
             }

@@ -32,14 +32,9 @@ namespace DiscountForms
             }
         }
 
-        //TODO: CheckPosition должен быть свойством.
-        //+
         /// <summary>
         ///     Вернуть и установить сущность CheckPosition
         /// </summary>
-        /// TODO: XML не совпадает с параметрами
-        // неправильный мёрдж))
-
         public CheckPosition CheckPosition
         {
             get
@@ -49,7 +44,7 @@ namespace DiscountForms
                     return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Percent,
                         Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
                 }
-
+                //TODO: Тут правильнее завернуть в if с проверкой другого радиобатона, т.к. это потенциальное место расширения функциональности
                 return new CheckPosition(DiscountFactory.GetDiscount(Discounts.Coupon,
                     Convert.ToDouble(ValueBox.Text)), new Product(Convert.ToDouble(PriceBox.Text)));
             }
@@ -76,8 +71,7 @@ namespace DiscountForms
         /// <param name="e"></param>
         private void TextBox_Validating(object sender, CancelEventArgs e)
         {
-            var textBox = sender as TextBox;
-            if (textBox != null)
+            if (sender is TextBox textBox)
             {
                 TextBoxCheck(textBox, e);
             }
