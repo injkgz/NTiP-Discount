@@ -16,7 +16,7 @@ namespace Discount
         public static DiscountBase GetDiscount(Discounts key,
             double value)
         {
-            DiscountBase discountBase = null;
+            DiscountBase discountBase;
 
             switch (key)
             {

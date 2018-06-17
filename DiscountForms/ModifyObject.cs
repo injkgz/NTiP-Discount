@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using Discount;
+using DiscountForms.Properties;
 using static DiscountForms.FormTools;
 
 namespace DiscountForms
@@ -21,7 +22,7 @@ namespace DiscountForms
         }
 
         /// <summary>
-        ///     Заблокировать запись в поля
+        ///     Установить/вернуть разрешение на запись в поля
         /// </summary>
         public bool ReadOnly
         {
@@ -30,6 +31,15 @@ namespace DiscountForms
                 PriceBox.ReadOnly = value;
                 ValueBox.ReadOnly = value;
                 DiscountBox.Enabled = !value;
+            }
+            get
+            {
+                if (PriceBox.ReadOnly && ValueBox.ReadOnly && DiscountBox.Enabled)
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
 
@@ -64,8 +74,6 @@ namespace DiscountForms
             }
             set
             {
-                ValueBox.Text = value.DiscountValue.ToString();
-                PriceBox.Text = value.CheckPositionPrice.ToString();
                 switch (value.DiscountType)
                 {
                     case "Скидка по процентам":
@@ -75,6 +83,9 @@ namespace DiscountForms
                         CouponRadioButton.Checked = true;
                         break;
                 }
+
+                ValueBox.Text = value.DiscountValue.ToString();
+                PriceBox.Text = value.CheckPositionPrice.ToString();
             }
         }
 
@@ -100,24 +111,32 @@ namespace DiscountForms
         {
             if (sender is TextBox textBox)
             {
-                try
+                if (textBox.Text == "")
                 {
-                    Convert.ToDouble(textBox.Text);
                 }
-                catch (FormatException exception)
+                else
                 {
-                    MessageBox.Show("Вы вводите некорректные символы!\n" + exception.Message);
+                    try
+                    {
+                        Convert.ToDouble(textBox.Text);
+                        if (!ReadOnly)
+                        {
+                            if (!PercentRadioButton.Checked)
+                            {
+                                return;
+                            }
+
+                            if (Convert.ToDouble(ValueBox.Text) > 100)
+                            {
+                                ValueBox.Text = Resources.PercentMaxValue;
+                            }
+                        }
+                    }
+                    catch (FormatException exception)
+                    {
+                        MessageBox.Show("Вы вводите некорректные символы!\n" + exception.Message);
+                    }
                 }
-            }
-
-            if (!PercentRadioButton.Checked)
-            {
-                return;
-            }
-
-            if (Convert.ToDouble(ValueBox.Text) > 100)
-            {
-                ValueBox.Text = "100";
             }
         }
     }

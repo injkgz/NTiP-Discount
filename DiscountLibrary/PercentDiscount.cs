@@ -68,6 +68,11 @@ namespace Discount
         public override double Calculate(double price)
         {
             CheckPrice(price);
+            if (Percent == 100)
+            {
+                return 0;
+            }
+
             return price - price / 100 * _percent;
         }
     }

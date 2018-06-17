@@ -226,6 +226,7 @@ namespace DiscountForms
         {
             if (productTable.CurrentRow != null)
             {
+                ShowObject.ReadOnly = true;
                 ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
                 ShowObject.Visible = true;
             }
@@ -249,14 +250,15 @@ namespace DiscountForms
                     {
                         _checkList[productTable.CurrentRow.Index] = form.Object;
                     }
+
+                    ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
+                    ShowObject.Visible = true;
                 }
                 catch (ArgumentException exception)
                 {
                     MessageBox.Show(exception.Message);
                 }
             }
-            ShowObject.CheckPosition = _checkList[productTable.CurrentRow.Index];
-            ShowObject.Visible = true;
         }
     }
 }

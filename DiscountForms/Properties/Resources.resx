@@ -120,4 +120,7 @@
   <data name="FileExtention" xml:space="preserve">
     <value>CheckPositionList|*.inj</value>
   </data>
+  <data name="PercentMaxValue" xml:space="preserve">
+    <value>100</value>
+  </data>
 </root>

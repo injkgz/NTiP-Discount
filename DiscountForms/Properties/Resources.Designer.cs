@@ -68,5 +68,14 @@ namespace DiscountForms.Properties {
                 return ResourceManager.GetString("FileExtention", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 100.
+        /// </summary>
+        internal static string PercentMaxValue {
+            get {
+                return ResourceManager.GetString("PercentMaxValue", resourceCulture);
+            }
+        }
     }
 }
